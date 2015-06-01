@@ -83,6 +83,7 @@ public class Main extends AppCompatActivity {
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(!(uname.getText().toString().equals("")||pass.getText().toString().equals(""))){
                     final ProgressDialog progressDialog = new ProgressDialog(Main.this);
                     progressDialog.setMessage("Logging in");
                     progressDialog.show();
@@ -110,6 +111,11 @@ public class Main extends AppCompatActivity {
                     });
 
                 }
+                else{
+                        Toast.makeText(Main.this, "User name or password cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+
+            }
             });
         }
     }
