@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Evolution</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Log Out</string>
+
+    //Main Activity
+    <string name="unameHint">Email ID</string>
+    <string name="passHint">Password</string>
+    <string name="btnTxt">Login</string>
+
+</resources>
