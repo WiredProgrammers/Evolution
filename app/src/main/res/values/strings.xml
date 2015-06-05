@@ -6,7 +6,15 @@
 
     //Main Activity
     <string name="unameHint">Email ID</string>
+    <string name="nameHint">Name</string>
     <string name="passHint">Password</string>
     <string name="btnTxt">Login</string>
+
+    //Admin Activity
+    <string-array name="tabs">
+        <item>See Activity</item>
+        <item>Add User</item>
+    </string-array>
+    <string name="signup_btn">Add</string>
 
 </resources>

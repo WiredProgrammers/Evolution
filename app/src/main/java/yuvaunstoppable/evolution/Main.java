@@ -40,19 +40,6 @@ public class Main extends AppCompatActivity {
         uname = (EditText) findViewById(R.id.uname);
         pass = (EditText) findViewById(R.id.pass);
 
-        /*sParseUser puser = new ParseUser();
-        puser.put("name","Yash");
-        puser.setPassword("yash2710");
-        puser.setUsername("13bce123@nirmauni.ac.in");
-        puser.put("type", "admin");
-        puser.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(ParseException e) {
-
-                Toast.makeText(Main.this, e.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             userType = currentUser.getString("type");
@@ -62,6 +49,7 @@ public class Main extends AppCompatActivity {
             else
                 i = new Intent(Main.this, Admin.class);
             i.putExtra("user", currentUser.getString("name"));
+
             startActivity(i);
             finish();
         } else {
@@ -83,39 +71,39 @@ public class Main extends AppCompatActivity {
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(!(uname.getText().toString().equals("")||pass.getText().toString().equals(""))){
-                    final ProgressDialog progressDialog = new ProgressDialog(Main.this);
-                    progressDialog.setMessage("Logging in");
-                    progressDialog.show();
-                    user = uname.getText().toString();
-                    password = pass.getText().toString();
-                    ParseUser.logInInBackground(user, password, new LogInCallback() {
-                        @Override
-                        public void done(ParseUser parseUser, ParseException e) {
-                            progressDialog.dismiss();
-                            if (parseUser == null) {
-                                Toast.makeText(Main.this, "Wrong Email/Password combination", Toast.LENGTH_SHORT).show();
-                            } else {
-                                userType = parseUser.getString("type");
-                                Intent i;
-                                if (userType.equals("volunteer"))
-                                    i = new Intent(Main.this, MainActivity.class);
-                                else
-                                    i = new Intent(Main.this, Admin.class);
+                    if (!(uname.getText().toString().equals("") || pass.getText().toString().equals(""))) {
+                        final ProgressDialog progressDialog = new ProgressDialog(Main.this);
+                        progressDialog.setMessage("Verifying Credentials");
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
+                        user = uname.getText().toString();
+                        password = pass.getText().toString();
+                        ParseUser.logInInBackground(user, password, new LogInCallback() {
+                            @Override
+                            public void done(ParseUser parseUser, ParseException e) {
+                                progressDialog.dismiss();
+                                if (parseUser == null) {
+                                    Toast.makeText(Main.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    userType = parseUser.getString("type");
+                                    Intent i;
+                                    if (userType.equals("volunteer"))
+                                        i = new Intent(Main.this, MainActivity.class);
+                                    else
+                                        i = new Intent(Main.this, Admin.class);
 
-                                i.putExtra("user", parseUser.getString("name"));
-                                startActivity(i);
-                                finish();
+                                    i.putExtra("user", parseUser.getString("name"));
+                                    startActivity(i);
+                                    finish();
+                                }
                             }
-                        }
-                    });
+                        });
 
-                }
-                else{
+                    } else {
                         Toast.makeText(Main.this, "User name or password cannot be empty", Toast.LENGTH_SHORT).show();
                     }
 
-            }
+                }
             });
         }
     }

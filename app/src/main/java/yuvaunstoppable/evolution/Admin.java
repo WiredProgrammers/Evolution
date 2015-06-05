@@ -2,50 +2,49 @@ package yuvaunstoppable.evolution;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.parse.ParseUser;
+
+import yuvaunstoppable.evolution.fragments.AdminSignUp;
+import yuvaunstoppable.evolution.fragments.AdminView;
 
 /**
  * Created by Yash on 29-May-15.
  */
 public class Admin extends AppCompatActivity{
-    private Toolbar toolbar;
+
     Intent i;
     String user;
-    RecyclerView recyclerView;
+    SlidingTabLayout tabs;
+    ViewPager viewPager = null;
+    Toolbar toolbar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adminwelcome);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         i = getIntent();
         user = i.getStringExtra("user");
+        getSupportActionBar().setTitle("Hey, "+user);
 
-        TextView userWelcome = (TextView) findViewById(R.id.welusr);
-        userWelcome.setText("Welcome, " + user);
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        viewPager.setAdapter(new ViewPagerAdapter(fragmentManager));
 
-//        recyclerView = (RecyclerView) findViewById(R.id.actlist);
-//        recyclerView.setAdapter(new AdminActionAdapter(this));
-//        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//
-//            }
-//
-//            @Override
-//            public void onLongClick(View view, int position) {
-//
-//            }
-//        }));
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        tabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        tabs.setBackgroundColor(getResources().getColor(R.color.primary));
+        tabs.setSelectedIndicatorColors(getResources().getColor(R.color.accent));
+        tabs.setViewPager(viewPager);
+
     }
 
     @Override
@@ -70,4 +69,36 @@ public class Admin extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+    class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
+        String[] tabs;
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+            tabs=getResources().getStringArray(R.array.tabs);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment = null;
+            if(position == 1){
+                fragment = new AdminSignUp();
+            }
+            if(position == 0){
+                fragment = new AdminView();
+            }
+
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabs[position];
+        }
+    }
 }
+

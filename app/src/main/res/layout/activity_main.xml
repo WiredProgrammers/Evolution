@@ -15,7 +15,7 @@
         android:layout_below="@id/toolbar"
         android:layout_margin="16dp"
         android:hint="@string/unameHint"
-        android:inputType="text" />
+        android:inputType="textEmailAddress" />
 
     <LinearLayout
         android:id="@+id/ll"
