@@ -74,7 +74,7 @@ public class Admin extends AppCompatActivity{
         String[] tabs;
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
-            tabs=getResources().getStringArray(R.array.tabs);
+            tabs=getResources().getStringArray(R.array.adminTabs);
         }
 
         @Override

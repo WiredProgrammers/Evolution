@@ -11,10 +11,20 @@
     <string name="btnTxt">Login</string>
 
     //Admin Activity
-    <string-array name="tabs">
+    <string-array name="adminTabs">
         <item>See Activity</item>
         <item>Add User</item>
     </string-array>
     <string name="signup_btn">Add</string>
+
+    //Volunteer Activity
+    <string name="volunteersubmit">Button</string>
+    <string-array name="volunteerTabs">
+        <item>Sanitation</item>
+        <item>Water</item>
+        <item>CampusRenovation</item>
+        <item>Sweeper</item>
+        <item>Others</item>
+    </string-array>
 
 </resources>

@@ -1,8 +1,5 @@
 package yuvaunstoppable.evolution;
 
-/**
- * Created by Yash on 29-May-15.
- */
 
 import android.app.ProgressDialog;
 import android.content.Intent;
