@@ -67,6 +67,7 @@ public class AdminSignUp extends Fragment {
                             Toast.makeText(getActivity(), "User Added Successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
+
                 ParseUser.logOutInBackground();
                 Log.d("User",cuser.getUsername()+cuser.get("pass").toString());
                 ParseUser.logInInBackground(cuser.getUsername(), cuser.get("pass").toString());
