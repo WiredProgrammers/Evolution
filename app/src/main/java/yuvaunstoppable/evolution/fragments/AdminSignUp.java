@@ -2,7 +2,6 @@ package yuvaunstoppable.evolution.fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,8 +26,6 @@ import yuvaunstoppable.evolution.R;
 public class AdminSignUp extends Fragment {
 
     String[] types = {"Admin", "Volunteer"};
-
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_adminsignup, container, false);
