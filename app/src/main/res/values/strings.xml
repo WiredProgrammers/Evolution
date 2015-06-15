@@ -19,6 +19,21 @@
 
     //Volunteer Activity
     <string name="volunteersubmit">Button</string>
+    <string name="cond_basin">Condition of Basins</string>
+    <string name="cond_urinal">Condition of Urinals</string>
+    <string name="cond_taps">No of working taps</string>
+    <string name="no_buck_tumb">No. of buckets and tumblers are same</string>
+    <string name="present_tumbler">No. of Tumbler</string>
+    <string name="present_bucket">No. of Bucket</string>
+    <string name="cond_washroom">Overall condition of washroom</string>
+    <string name="flow_basin">Flow of water in Basin</string>
+    <string name="flow_urinal">Flow of water in</string>
+    <string name="cond_mirror">Condition of Mirrors</string>
+    <string name="drainage_clogging">Drainage Clogging</string>
+    <string name="stinking">Stinking</string>
+    <string name="no_dustbin">Number of dustbins</string>
+    <string name="latch_doors">Latch on all doors</string>
+    <string name="comments">Comments</string>
     <string-array name="volunteerTabs">
         <item>Sanitation</item>
         <item>Water</item>
