@@ -47,10 +47,6 @@ public class Volunteer extends AppCompatActivity{
         tabs.setBackgroundColor(getResources().getColor(R.color.primary));
         tabs.setSelectedIndicatorColors(getResources().getColor(R.color.accent));
         tabs.setViewPager(viewPager);
-
-
-
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

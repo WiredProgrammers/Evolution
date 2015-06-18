@@ -23,7 +23,6 @@ public class VolunteerSanitation extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_volunteer_sanitation,container,false);
-//        RecyclerView recyclerView = (RecyclerView) layout.findViewById(R.id.list);
 
         return layout;
     }
