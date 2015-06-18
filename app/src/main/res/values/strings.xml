@@ -41,7 +41,7 @@
     <string name="cond_blackboard">Condition of blackboard</string>
     <string name="cond_color">Condition of color</string>
     <string name="label">How many times does the sweeper clean the following per day?</string>
-    <string name="boys">Boys\'s Washroom</string>
+    <string name="boys">Boy\'s Washroom</string>
     <string name="girls">Girl\'s Washroom</string>
     <string name="corridor">School Corridor</string>
     <string name="campus">School Campus</string>
@@ -52,7 +52,6 @@
     <string name="emptydustbin">Emptying the Dustbins</string>
     <string name="clean_midday">How clean is the mid-day meal area?</string>
     <string name="clean_campus">How clean is school yard/compound?</string>
-    <string name="title_boys">Boys Washroom</string>
     <string name="no_basin">No of Basin:</string>
     <string name="no_urinals">No. of Urinals</string>
     <string name="no_taps">No. of Taps:</string>
