@@ -55,6 +55,32 @@
     <string name="no_basin">No of Basin:</string>
     <string name="no_urinals">No. of Urinals</string>
     <string name="no_taps">No. of Taps:</string>
+    <string name="reg_clean_tank">Regularity of Cleaning Water Tank:</string>
+    <string name="water_tank_purifier">Water Tank And Purifier</string>
+    <string name="water_purifier">Is the water purifier working properly?</string>
+    <string name="filling_tank_freq">Frequency of filling the tank:</string>
+    <string name="filling_tank_freq_ans">no. of times in a day</string>
+    <string name="water_tank_capacity">Capacity of Water Tank:</string>
+    <string name="water_tank_capacity_ans">Capacity in Litre</string>
+    <string name="water_no_taps">No. of taps:</string>
+    <string name="water_broken_taps">No. of broken taps</string>
+    <string name="water_reg_flow">Regular flow of water?</string>
+    <string name="cleanliness_around_drink_area">Cleanliness of area around drinking water area:</string>
+    <string name="tap_leakage">Leakage of taps?</string>
+    <string name="drain_clogging">Drainage Clogging?</string>
+    <string name="stinking_in_drink_area">Stinking?</string>
+    <string name="drink_no_taps">No. of taps:</string>
+    <string name="dishwash_text">Dishwashing Area</string>
+    <string name="dish_wash_no_of_taps">No. of taps:</string>
+    <string name="dishwash_area_broken_taps">No. of broken taps:</string>
+    <string name="regular_flow_water">Regular flow of water?</string>
+    <string name="clean_around_dish_wash_area">Cleanliness of area around Dishwashing water area:</string>
+    <string name="tap_leakage_dishwash_area">Leakage of taps?</string>
+    <string name="drain_clogg_dish_wash_area">Drainage Clogging?</string>
+    <string name="comment">Comments</string>
+    <string name="drink_water_area">Drinking Water area</string>
+    <string name="how_often">How Often</string>
+    <string name="spinner2_text">How often?</string>
     <string-array name="volunteerTabs">
         <item>Sanitation</item>
         <item>Water</item>

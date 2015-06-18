@@ -8,5 +8,5 @@
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
     android:textAlignment="inherit"
-    android:text="User Type"
+    android:text="@string/spinner2_text"
     android:padding="7dp"/>

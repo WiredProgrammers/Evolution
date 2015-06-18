@@ -1,8 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <!--Water Tank And Water Purifier-->
+                    <TextView
+                        android:id="@+id/water_tank_purifier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/water_tank_purifier" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/regularity_cleaning_tank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/water_tank_purifier"
+                        android:checked="true"
+                        android:text="@string/reg_clean_tank" />
+
+                    <Spinner
+                        android:id="@+id/how_often_clean"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/regularity_cleaning_tank"
+                        android:layout_margin="@dimen/margin"></Spinner>
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/water_pure_proper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/how_often_clean"
+                        android:checked="true"
+                        android:text="@string/water_purifier" />
+
+
+                    <EditText
+                        android:id="@+id/fill_tank_freq_ans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/water_pure_proper"
+                        android:hint="@string/filling_tank_freq"
+                        android:inputType="number" />
+
+
+
+                    <EditText
+                        android:id="@+id/water_tank_capacity_ans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fill_tank_freq_ans"
+                        android:hint="@string/water_tank_capacity"
+                        android:inputType="number" />
+
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/drinking_water_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/drink_water_area"/>
+
+                    <TextView
+                        android:id="@+id/no_of_taps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/water_no_taps"
+                        android:layout_below="@id/drinking_water_area"/>
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/broken_taps"
+                        android:layout_below="@+id/no_of_taps"
+                        android:hint="@string/water_broken_taps"
+                        android:inputType="number"/>
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/regular_flow_water"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/broken_taps"
+                        android:checked="true"
+                        android:text="@string/water_reg_flow" />
+                   <TextView
+                       android:id="@+id/clean_around_water_area_text"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/cleanliness_around_drink_area"
+                       android:layout_below="@+id/regular_flow_water"/>
+
+                    <RatingBar
+                        android:id="@+id/clean_around_water_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/clean_around_water_area_text"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="5"
+                        android:stepSize="@integer/size"/>
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/tap_Leakage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/clean_around_water_area"
+                        android:checked="true"
+                        android:text="@string/tap_leakage" />
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/drain_clogg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tap_Leakage"
+                        android:checked="true"
+                        android:text="@string/drain_clogging" />
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/stinking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/drain_clogg"
+                        android:checked="true"
+                        android:text="@string/stinking_in_drink_area" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/no_of_dustbins"
+                        android:layout_below="@+id/stinking"
+                        android:hint="@string/no_dustbin"
+                        android:inputType="number"/>
+
+                    <EditText
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/water_comments"
+                          android:layout_below="@+id/no_of_dustbins"
+                          android:hint="@string/comment"
+                          android:inputType="textMultiLine"/>
+
+
+
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/dishwasing_areaa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dishwash_text"/>
+                <TextView
+                    android:id="@+id/no_taps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dishwasing_areaa"
+                    android:text="@string/dish_wash_no_of_taps"
+                    />
+                <TextView
+                    android:id="@+id/no_taps_broken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/no_taps"
+                    android:text="@string/dishwash_area_broken_taps"
+                    />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/reg_flow_water"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/no_taps_broken"
+                    android:checked="true"
+                    android:text="@string/regular_flow_water" />
+                <TextView
+                    android:id="@+id/clean_around_water_area_textt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/reg_flow_water"
+                    android:text="@string/clean_around_dish_wash_area"/>
+
+                <RatingBar
+                    android:id="@+id/clean_around_dish_wash_areaa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/clean_around_water_area_textt"
+                    android:layout_centerHorizontal="true"
+                    android:numStars="5"
+                    android:stepSize="@integer/size"/>
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/leakage_of_taps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/clean_around_dish_wash_areaa"
+                    android:checked="true"
+                    android:text="@string/tap_leakage_dishwash_area" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/drainnage_clogging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/leakage_of_taps"
+                    android:checked="true"
+                    android:text="@string/drain_clogg_dish_wash_area" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/Stinking_dish_wash_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/drainnage_clogging"
+                    android:checked="true"
+                    android:text="@string/stinking" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/no_of_dustbin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Stinking_dish_wash_area"
+                    android:checked="true"
+                    android:text="@string/no_dustbin" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dish_wash_comments"
+                    android:layout_below="@+id/no_of_dustbin"
+                    android:hint="@string/comment"
+                    android:inputType="textMultiLine"/>
+
+
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
