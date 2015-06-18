@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:longClickable="true"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <!--Fabric Shade-->
+                <TextView
+                    android:id="@+id/cond_shade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cond_shade" />
+
+                <CheckBox
+                    android:id="@+id/need_repair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cond_shade"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/need_repair" />
+
+                <CheckBox
+                    android:id="@+id/clean"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/need_repair"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/isclean" />
+
+                <!--blackboard-->
+                <EditText
+                    android:id="@+id/no_blackboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/clean"
+                    android:hint="@string/no_blackboard" />
+
+                <TextView
+                    android:id="@+id/cond_blackboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/no_blackboard"
+                    android:text="@string/cond_blackboard" />
+
+                <RatingBar
+                    android:id="@+id/star_blackboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cond_blackboard"
+                    android:layout_centerHorizontal="true"
+                    android:numStars="3" />
+
+                <!--dustbins-->
+                <EditText
+                    android:id="@+id/no_dustbin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/star_blackboard"
+                    android:hint="@string/no_dustbin" />
+
+                <TextView
+                    android:id="@+id/cond_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/no_dustbin"
+                    android:text="@string/cond_color" />
+
+                <RatingBar
+                    android:id="@+id/star_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cond_color"
+                    android:layout_centerHorizontal="true"
+                    android:numStars="3" />
+
+                <EditText
+                    android:id="@+id/comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/star_color"
+                    android:hint="@string/comments"
+                    android:inputType="textMultiLine" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </ScrollView>
 </LinearLayout>

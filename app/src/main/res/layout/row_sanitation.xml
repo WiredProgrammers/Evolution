@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:longClickable="true">
+    android:longClickable="true"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
-        app:cardUseCompatPadding="true">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/title"

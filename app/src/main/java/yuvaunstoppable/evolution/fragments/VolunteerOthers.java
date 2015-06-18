@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.lang.reflect.Constructor;
+import yuvaunstoppable.evolution.R;
 
 /**
  * Created by amit on 10-Jun-15.
@@ -20,6 +20,8 @@ public class VolunteerOthers extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View layout = inflater.inflate(R.layout.fragment_volunteer_others,container,false);
+
+        return layout;
     }
 }

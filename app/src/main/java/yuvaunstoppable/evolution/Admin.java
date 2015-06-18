@@ -65,6 +65,7 @@ public class Admin extends AppCompatActivity{
         if (id == R.id.action_logout) {
             ParseUser.logOut();
             startActivity(new Intent(Admin.this,Main.class));
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

@@ -41,8 +41,8 @@ public class Main extends AppCompatActivity {
         if (currentUser != null) {
             userType = currentUser.getString("type");
             Intent i;
-            if (userType.equals("volunteer"))
-                i = new Intent(Main.this, MainActivity.class);
+            if (userType.equalsIgnoreCase("Volunteer"))
+                i = new Intent(Main.this, Volunteer.class);
             else
                 i = new Intent(Main.this, Admin.class);
             i.putExtra("user", currentUser.getString("name"));
@@ -84,8 +84,8 @@ public class Main extends AppCompatActivity {
                                 } else {
                                     userType = parseUser.getString("type");
                                     Intent i;
-                                    if (userType.equals("volunteer"))
-                                        i = new Intent(Main.this, MainActivity.class);
+                                    if (userType.equalsIgnoreCase("Volunteer"))
+                                        i = new Intent(Main.this, Volunteer.class);
                                     else
                                         i = new Intent(Main.this, Admin.class);
 

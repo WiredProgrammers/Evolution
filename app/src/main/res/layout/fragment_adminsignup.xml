@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:hint="@string/unameHint"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress|textAutoComplete" />
 
     <EditText
         android:id="@+id/name"
@@ -19,7 +19,7 @@
         android:layout_below="@id/uname"
         android:layout_margin="@dimen/margin"
         android:hint="@string/nameHint"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords|textAutoComplete" />
 
     <EditText
         android:id="@+id/pass"

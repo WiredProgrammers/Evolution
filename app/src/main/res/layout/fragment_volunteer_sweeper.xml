@@ -1,6 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:longClickable="true"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label" />
+
+                <EditText
+                    android:id="@+id/boys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label"
+                    android:hint="@string/boys"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/girls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/boys"
+                    android:hint="@string/girls"
+                    android:inputType="number" />
+
+
+                <EditText
+                    android:id="@+id/corridor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/girls"
+                    android:hint="@string/corridor"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/campus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/corridor"
+                    android:hint="@string/campus"
+                    android:inputType="number" />
+
+
+                <EditText
+                    android:id="@+id/water"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/campus"
+                    android:hint="@string/water"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/dishwash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/water"
+                    android:hint="@string/dishwash"
+                    android:inputType="number" />
+
+
+                <EditText
+                    android:id="@+id/classroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dishwash"
+                    android:hint="@string/classroom"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/storageroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/classroom"
+                    android:hint="@string/storageroom"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/emptydustbin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/storageroom"
+                    android:hint="@string/emptydustbin"
+                    android:inputType="number" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </ScrollView>
 </LinearLayout>

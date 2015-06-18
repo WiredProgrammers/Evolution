@@ -1,12 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/title_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_boys"/>
+
+                    <!--Basins-->
+                    <TextView
+                        android:id="@+id/no_basin_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_boys"
+                        android:text="@string/no_basin"/>
+
+                    <TextView
+                        android:id="@+id/cond_basin_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/no_basin_boys"
+                        android:text="@string/cond_basin" />
+
+                    <RatingBar
+                        android:id="@+id/star_basin_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cond_basin"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="5"
+                        android:stepSize="@integer/size"/>
+
+                    <!--Urinals-->
+
+                    <TextView
+                        android:id="@+id/no_urinals_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_basin_boys"
+                        android:text="@string/no_urinals"/>
+
+                    <TextView
+                        android:id="@+id/cond_urinal_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/no_urinals_boys"
+                        android:text="@string/cond_urinal" />
+
+                    <RatingBar
+                        android:id="@+id/star_urinal_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cond_urinal_boys"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="5"
+                        android:stepSize="@integer/size"/>
+
+                    <!--Taps-->
+                    <TextView
+                        android:id="@+id/no_taps_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_urinal_boys"
+                        android:text="@string/no_taps"/>
+
+
+                    <EditText
+                        android:id="@+id/star_taps_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/no_taps_boys"
+                        android:hint="@string/cond_taps"
+                        android:inputType="number" />
+
+                    <!--Buckets and Tumblers-->
+                    <TextView
+                        android:id="@+id/no_buck_tumb_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_taps_boys" />
+
+                    <CheckBox
+                        android:id="@+id/same_buck_tumb_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/no_buck_tumb_boys"
+                        android:text="@string/no_buck_tumb" />
+
+                    <LinearLayout
+                        android:id="@+id/butulayout_boys"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/same_buck_tumb_boys"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/present_bucket_boys"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:inputType="number"
+                            android:text="@string/present_bucket" />
+
+                        <EditText
+                            android:id="@+id/present_tumbler_boys"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:hint="@string/present_tumbler"
+                            android:inputType="number" />
+
+
+                    </LinearLayout>
+                    <!--Washroom-->
+                    <TextView
+                        android:id="@+id/cond_washroom_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/butulayout_boys"
+                        android:text="@string/cond_washroom" />
+
+                    <RatingBar
+                        android:id="@+id/star_washroom_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cond_washroom_boys"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="5"
+                        android:stepSize="@integer/size"/>
+
+                    <!--flow of water-->
+                    <TextView
+                        android:id="@+id/tv_flow_basin_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_washroom"
+                        android:text="@string/flow_basin" />
+
+                    <RatingBar
+                        android:id="@+id/star_flow_basin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_flow_basin"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="3" />
+
+                    <TextView
+                        android:id="@+id/tv_flow_urinal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_flow_basin"
+                        android:text="@string/flow_urinal" />
+
+                    <RatingBar
+                        android:id="@+id/star_flow_urinal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_flow_urinal"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="3" />
+
+                    <!--window and mirror-->
+                    <TextView
+                        android:id="@+id/cond_window"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_flow_urinal"
+                        android:text="@string/flow_basin" />
+
+                    <RatingBar
+                        android:id="@+id/star_window"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cond_window"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="3" />
+
+                    <TextView
+                        android:id="@+id/no_mirror"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_window" />
+
+                    <TextView
+                        android:id="@+id/cond_mirror"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/no_mirror"
+                        android:text="@string/cond_mirror" />
+
+                    <RatingBar
+                        android:id="@+id/star_mirror"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cond_mirror"
+                        android:layout_centerHorizontal="true"
+                        android:numStars="5" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/drainage_clogging"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/star_mirror"
+                        android:text="@string/drainage_clogging" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/stinking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/drainage_clogging"
+                        android:text="@string/stinking" />
+
+                    <EditText
+                        android:id="@+id/no_dustbin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/stinking"
+                        android:hint="@string/no_dustbin"
+                        android:inputType="number" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/latch_doors"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/no_dustbin"
+                        android:checked="true"
+                        android:text="@string/latch_doors" />
+
+                    <EditText
+                        android:id="@+id/comments"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/latch_doors"
+                        android:hint="@string/comments"
+                        android:inputType="textMultiLine" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

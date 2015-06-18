@@ -54,7 +54,7 @@ public class AdminSignUp extends Fragment {
                 puser.put("pass", pass);
                 puser.setPassword(pass);
                 puser.setUsername(uname);
-                puser.put("type", types[utype.getSelectedItemPosition()]);
+                puser.put("type", types[utype.getSelectedItemPosition()-1]);
                 puser.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {

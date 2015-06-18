@@ -7,17 +7,19 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
+    <yuvaunstoppable.evolution.SlidingTabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:theme="@style/ToolbarTheme"  />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/volunteersubmit"
-        android:enabled="false"
-        android:background="@color/accent"
-        android:layout_margin="@dimen/margin"/>
+
+
 
 </LinearLayout>

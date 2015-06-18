@@ -1,13 +1,13 @@
 package yuvaunstoppable.evolution;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
 
 import yuvaunstoppable.evolution.fragments.VolunteerCampusRenovation;
 import yuvaunstoppable.evolution.fragments.VolunteerOthers;
@@ -19,14 +19,32 @@ import yuvaunstoppable.evolution.fragments.VolunteerWater;
  * Created by amit on 10-Jun-15.
  */
 public class Volunteer extends AppCompatActivity{
-
-
-
+    String user;
+    SlidingTabLayout tabs;
+    ViewPager viewPager = null;
+    Toolbar toolbar;
+    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteerwelcome);
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        i = getIntent();
+        user = i.getStringExtra("user");
+        getSupportActionBar().setTitle("Hey, "+user);
+
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        viewPager.setAdapter(new volunteerViewPagerAdapter(fragmentManager));
+
+        tabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        tabs.setBackgroundColor(getResources().getColor(R.color.primary));
+        tabs.setSelectedIndicatorColors(getResources().getColor(R.color.accent));
+        tabs.setViewPager(viewPager);
+
+
 
 
     }
@@ -62,7 +80,7 @@ public class Volunteer extends AppCompatActivity{
                 fragment = new VolunteerOthers();
             }
 
-            return null;
+            return fragment;
         }
 
         @Override
@@ -71,5 +89,7 @@ public class Volunteer extends AppCompatActivity{
 
             return 5;
         }
+
+
     }
 }
