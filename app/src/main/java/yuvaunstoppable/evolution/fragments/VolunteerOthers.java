@@ -25,6 +25,9 @@ public class VolunteerOthers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_volunteer_others,container,false);
 
+        starCleanCampus = (RatingBar) layout.findViewById(R.id.star_clean_campus);
+        starCleanMidDay = (RatingBar) layout.findViewById(R.id.star_clean_midday);
+
         return layout;
     }
 }
