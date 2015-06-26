@@ -106,6 +106,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/water_no_taps"
                         android:layout_below="@id/drinking_water_area"/>
+
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -113,6 +114,7 @@
                         android:layout_below="@+id/no_of_taps"
                         android:hint="@string/water_broken_taps"
                         android:inputType="number"/>
+
                     <android.support.v7.widget.SwitchCompat
                         android:id="@+id/regular_flow_water"
                         android:layout_width="match_parent"
