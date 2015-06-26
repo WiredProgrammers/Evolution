@@ -202,7 +202,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/dishwash_text"/>
                 <TextView
-                    android:id="@+id/no_taps"
+                    android:id="@+id/no_taps_dish_wash_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/dishwasing_areaa"
@@ -212,7 +212,7 @@
                     android:id="@+id/no_taps_broken"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/no_taps"
+                    android:layout_below="@+id/no_taps_dish_wash_area"
                     android:text="@string/dishwash_area_broken_taps"
                     />
                 <android.support.v7.widget.SwitchCompat
@@ -258,13 +258,13 @@
                     android:layout_below="@+id/drainnage_clogging"
                     android:checked="true"
                     android:text="@string/stinking" />
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/no_of_dustbin"
-                    android:layout_width="match_parent"
+                <EditText
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/no_of_dustbin"
                     android:layout_below="@+id/Stinking_dish_wash_area"
-                    android:checked="true"
-                    android:text="@string/no_dustbin" />
+                    android:hint="@string/no_dustbin"
+                    android:inputType="number"/>
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
