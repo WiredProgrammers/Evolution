@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusableInTouchMode="true">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -143,21 +144,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/clean_around_water_area"
-                        android:checked="true"
                         android:text="@string/tap_leakage" />
                     <android.support.v7.widget.SwitchCompat
                         android:id="@+id/drain_clogg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tap_Leakage"
-                        android:checked="true"
                         android:text="@string/drain_clogging" />
                     <android.support.v7.widget.SwitchCompat
                         android:id="@+id/stinking"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/drain_clogg"
-                        android:checked="true"
                         android:text="@string/stinking_in_drink_area" />
                     <EditText
                         android:layout_width="wrap_content"
@@ -242,21 +240,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/clean_around_dish_wash_areaa"
-                    android:checked="true"
                     android:text="@string/tap_leakage_dishwash_area" />
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/drainnage_clogging"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/leakage_of_taps"
-                    android:checked="true"
                     android:text="@string/drain_clogg_dish_wash_area" />
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/Stinking_dish_wash_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/drainnage_clogging"
-                    android:checked="true"
                     android:text="@string/stinking" />
                 <EditText
                     android:layout_width="wrap_content"

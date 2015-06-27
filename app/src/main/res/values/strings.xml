@@ -84,7 +84,7 @@
     <string-array name="volunteerTabs">
         <item>Sanitation</item>
         <item>Water</item>
-        <item>CampusRenovation</item>
+        <item>Campus Renovation</item>
         <item>Sweeper</item>
         <item>Others</item>
     </string-array>

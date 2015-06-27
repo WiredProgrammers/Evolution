@@ -49,7 +49,7 @@ public class VolunteerWater extends Fragment {
         isStinkingDishWashArea = (SwitchCompat) layout.findViewById(R.id.Stinking_dish_wash_area);
         cleanAroundWaterArea = (RatingBar) layout.findViewById(R.id.clean_around_water_area);
         cleanAroundDishWashArea = (RatingBar) layout.findViewById(R.id.clean_around_dish_wash_areaa);
-        noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_taps);
+        noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_of_taps);
         noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
         fillingFrequencyWater = (EditText) layout.findViewById(R.id.fill_tank_freq_ans);
         capacityWater = (EditText) layout.findViewById(R.id.water_tank_capacity_ans);
