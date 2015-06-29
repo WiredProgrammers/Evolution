@@ -98,6 +98,7 @@ public class Main extends AppCompatActivity {
 
                     } else {
                         Toast.makeText(Main.this, "User name or password cannot be empty", Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
