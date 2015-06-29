@@ -1,6 +1,8 @@
 package yuvaunstoppable.evolution;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,10 +10,26 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import yuvaunstoppable.evolution.fragments.VolunteerCampusRenovation;
 import yuvaunstoppable.evolution.fragments.VolunteerOthers;
@@ -28,6 +46,7 @@ public class Volunteer extends AppCompatActivity{
     ViewPager viewPager = null;
     Toolbar toolbar;
     Intent i;
+    Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +66,75 @@ public class Volunteer extends AppCompatActivity{
         tabs.setBackgroundColor(getResources().getColor(R.color.primary));
         tabs.setSelectedIndicatorColors(getResources().getColor(R.color.accent));
         tabs.setViewPager(viewPager);
+
+        submit = (Button) findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
+
+    class Submit extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+            dialog = ProgressDialog.show(Volunteer.this, "Login", "Loggin In...",
+                    true);
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+        super.onPostExecute(result);
+            dialog.dismiss();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost(
+                    "//lenovo-pc/sendcontent.php");
+            try {
+                ArrayList<NameValuePair> list = new ArrayList<NameValuePair>();
+                list.add(new BasicNameValuePair("user", user));
+                list.add(new BasicNameValuePair("pass", user));
+                httpPost.setEntity(new UrlEncodedFormEntity(list));
+
+                ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                final String response = httpClient.execute(httpPost,
+                        responseHandler);
+
+                if (response.startsWith("User Found")) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(Volunteer.this, "Login Successful",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    Intent i = new Intent(Volunteer.this, List.class);
+                    i.putExtra("user", user);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(Volunteer.this, "No user found",
+                            Toast.LENGTH_LONG).show();
+                }
+
+            } catch (Exception e) {
+                Log.e("Error", "Error");
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
