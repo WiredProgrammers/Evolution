@@ -34,12 +34,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/water_tank_purifier" />
+                    <ToggleButton
+                        android:id="@+id/status_wt_purifier"
+                        android:layout_below="@+id/water_tank_purifier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOff="@string/text_on"
+                        android:textOn="@string/text_off"/>
 
                     <android.support.v7.widget.SwitchCompat
                         android:id="@+id/regularity_cleaning_tank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/water_tank_purifier"
+                        android:layout_below="@+id/status_wt_purifier"
                         android:checked="true"
                         android:text="@string/reg_clean_tank" />
 
@@ -100,13 +107,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/drink_water_area"/>
+                    <ToggleButton
+                        android:id="@+id/status_dw_area"
+                        android:layout_below="@+id/drinking_water_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOff="@string/text_on"
+                        android:textOn="@string/text_off"/>
 
                     <TextView
                         android:id="@+id/no_of_taps"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/water_no_taps"
-                        android:layout_below="@id/drinking_water_area"/>
+                        android:layout_below="@id/status_dw_area"/>
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -199,11 +213,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dishwash_text"/>
+                <ToggleButton
+                    android:id="@+id/status_dish_area"
+                    android:layout_below="@+id/dishwasing_areaa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="@string/text_on"
+                    android:textOn="@string/text_off"/>
                 <TextView
                     android:id="@+id/no_taps_dish_wash_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/dishwasing_areaa"
+                    android:layout_below="@+id/status_dish_area"
                     android:text="@string/dish_wash_no_of_taps"
                     />
                 <TextView

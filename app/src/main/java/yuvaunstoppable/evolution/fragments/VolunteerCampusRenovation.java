@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.ToggleButton;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -28,6 +29,7 @@ public class VolunteerCampusRenovation extends android.support.v4.app.Fragment {
     static CheckBox needRepair,clean;
     static EditText noBlackboard,noDustbin,comments;
     static RatingBar starBlackboard,starColor;
+    static ToggleButton statusShade;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class VolunteerCampusRenovation extends android.support.v4.app.Fragment {
         comments = (EditText) layout.findViewById(R.id.comments);
         starBlackboard = (RatingBar) layout.findViewById(R.id.star_blackboard);
         starColor = (RatingBar) layout.findViewById(R.id.star_color);
-
+        statusShade = (ToggleButton) layout.findViewById(R.id.status_shade);
         return layout;
     }
 
@@ -54,6 +56,7 @@ public class VolunteerCampusRenovation extends android.support.v4.app.Fragment {
             values.add(new BasicNameValuePair("cond_board", Integer.toString((int) starBlackboard.getRating())));
             values.add(new BasicNameValuePair("color", Integer.toString((int) starColor.getRating())));
             values.add(new BasicNameValuePair("renovation_comments", comments.getText().toString()));
+            values.add(new BasicNameValuePair("status_shade", statusShade.isChecked()?"Upgrade":"New"));
         }catch(Exception e){}
         return values;
     }

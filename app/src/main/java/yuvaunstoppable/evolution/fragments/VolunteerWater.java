@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -36,6 +37,7 @@ public class VolunteerWater extends Fragment {
     static TextView noOfTapsWaterArea, noOfTapsDishWashArea;
     static RatingBar cleanAroundWaterArea, cleanAroundDishWashArea;
     static Spinner how_often_clean;
+    static ToggleButton statusWtPurifier, statusDishArea, StatusDwArea;
     static String[] types = {"1 month", "2 months", "3 months", "6 months", "12 months"};
 
     @Nullable
@@ -63,7 +65,9 @@ public class VolunteerWater extends Fragment {
         commentsWaterArea = (EditText) layout.findViewById(R.id.water_comments);
         commentsDishWashArea = (EditText) layout.findViewById(R.id.dish_wash_comments);
         noOfDustBinsDishWashArea = (EditText) layout.findViewById(R.id.no_of_dustbin);
-
+        statusWtPurifier = (ToggleButton) layout.findViewById(R.id.status_wt_purifier);
+        statusDishArea = (ToggleButton) layout.findViewById(R.id.status_dish_area);
+        StatusDwArea = (ToggleButton) layout.findViewById(R.id.status_dw_area);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner2_item, types);
         Log.d("Adapter", String.valueOf(adapter.isEmpty()));
@@ -97,6 +101,9 @@ public class VolunteerWater extends Fragment {
             values.add(new BasicNameValuePair("comments_dish",commentsDishWashArea.getText().toString()));
             values.add(new BasicNameValuePair("clean_water",Integer.toString((int) cleanAroundWaterArea.getRating())));
             values.add(new BasicNameValuePair("clean_dish",Integer.toString((int) cleanAroundDishWashArea.getRating())));
+            values.add(new BasicNameValuePair("staus_water", statusWtPurifier.isChecked()?"Upgrade":"New"));
+            values.add(new BasicNameValuePair("staus_water_area", StatusDwArea.isChecked()?"Upgrade":"New"));
+            values.add(new BasicNameValuePair("staus_dishwash", statusDishArea.isChecked()?"Upgrade":"New"));
         }catch (Exception e){}
         return values;
     }

@@ -33,13 +33,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/boys"/>
+                    <ToggleButton
+                        android:id="@+id/status_boys"
+                        android:layout_below="@+id/title_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOff="@string/text_on"
+                        android:textOn="@string/text_off"/>
+
 
                     <!--Basins-->
                     <TextView
                         android:id="@+id/no_basin_boys"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/title_boys"
+                        android:layout_below="@id/status_boys"
                         android:text="@string/no_basin"/>
 
                     <TextView
@@ -293,13 +301,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/girls"/>
+                    <ToggleButton
+                        android:id="@+id/status_girls"
+                        android:layout_below="@+id/title_girls"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textOff="@string/text_on"
+                        android:textOn="@string/text_off"/>
 
                     <!--Basins-->
                     <TextView
                         android:id="@+id/no_basin_girls"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/title_girls"
+                        android:layout_below="@id/status_girls"
                         android:text="@string/no_basin"/>
 
                     <TextView

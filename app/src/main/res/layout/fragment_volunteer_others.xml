@@ -55,6 +55,49 @@
                     android:layout_below="@id/clean_campus"
                     android:layout_centerHorizontal="true"
                     android:numStars="3" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/sound_system"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/star_clean_campus"
+                    android:checked="true"
+                    android:text="@string/sound_system" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/kitchen_midday_meals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sound_system"
+                    android:checked="true"
+                    android:text="@string/kitchen_midday_meals" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/sports_kits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/kitchen_midday_meals"
+                    android:checked="true"
+                    android:text="@string/sports_kits" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/books_stationery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sports_kits"
+                    android:checked="true"
+                    android:text="@string/book_stationery" />
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/amenities_cultural"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/books_stationery"
+                    android:checked="true"
+                    android:text="@string/amenities_culutural" />
+                <EditText
+                    android:id="@+id/other_comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/amenities_cultural"
+                    android:hint="@string/other_comments"
+                    android:inputType="textMultiLine"
+                    />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 

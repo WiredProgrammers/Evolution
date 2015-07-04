@@ -84,6 +84,14 @@
     <string name="spinner3_text">Select School</string>
     <string name="domain">http://10.0.0.3/</string>
     <string name="mosquito">Condition of Mosquito net</string>
+    <string name="text_on">New</string>
+    <string name="text_off">Upgrade</string>
+    <string name="sound_system">Is sound system installed?</string>
+    <string name="kitchen_midday_meals">Kitchen for mid-day meals</string>
+    <string name="sports_kits">Sports kits</string>
+    <string name="book_stationery">Books/Stationery distribution</string>
+    <string name="amenities_culutural">Amenities for cultural programs</string>
+    <string name="other_comments">Any comments</string>
     <string-array name="volunteerTabs">
         <item>Sanitation</item>
         <item>Water</item>

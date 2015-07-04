@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -41,6 +42,7 @@ public class VolunteerSanitation extends Fragment {
     static EditText starTapsBoys, noTumbBoys, noBuckBoys, commentsBoys;
     static CheckBox tumbBuckSameBoys;
     static SwitchCompat doorLatchBoys,drainCloggingBoys,stinkingBoys,roofBoys;
+    static ToggleButton status_boys, status_girls;
 
     @Nullable
     @Override
@@ -89,7 +91,8 @@ public class VolunteerSanitation extends Fragment {
         roofBoys = (SwitchCompat) layout.findViewById(R.id.roof_boys);
         stinkingBoys = (SwitchCompat) layout.findViewById(R.id.stinking_boys);
         drainCloggingBoys = (SwitchCompat) layout.findViewById(R.id.drainage_clogging_boys);
-
+        status_boys = (ToggleButton) layout.findViewById(R.id.status_boys);
+        status_girls = (ToggleButton) layout.findViewById(R.id.status_girls);
 
         tumbBuckSameBoys.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -148,6 +151,8 @@ public class VolunteerSanitation extends Fragment {
             values.add(new BasicNameValuePair("stinking_boys", stinkingBoys.isChecked() ? "yes" : "no"));
             values.add(new BasicNameValuePair("clog_boys", drainCloggingBoys.isChecked() ? "yes" : "no"));
             values.add(new BasicNameValuePair("comments_boys", commentsBoys.getText().toString()));
+            values.add(new BasicNameValuePair("status_boys", status_boys.isChecked()?"Upgrade":"New"));
+            values.add(new BasicNameValuePair("status_girls", status_girls.isChecked()?"Upgrade":"New"));
         }catch(Exception e){}
         return values;
     }
