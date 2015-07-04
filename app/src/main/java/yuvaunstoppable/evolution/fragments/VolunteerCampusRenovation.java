@@ -9,6 +9,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+
 import yuvaunstoppable.evolution.R;
 
 /**
@@ -20,9 +25,9 @@ public class VolunteerCampusRenovation extends android.support.v4.app.Fragment {
     public VolunteerCampusRenovation(){
 
     }
-    CheckBox needRepair,clean;
-    EditText noBlackboard,noDustbin,comments;
-    RatingBar starBlackboard,starColor;
+    static CheckBox needRepair,clean;
+    static EditText noBlackboard,noDustbin,comments;
+    static RatingBar starBlackboard,starColor;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,5 +41,20 @@ public class VolunteerCampusRenovation extends android.support.v4.app.Fragment {
         starColor = (RatingBar) layout.findViewById(R.id.star_color);
 
         return layout;
+    }
+
+    public static ArrayList<NameValuePair> getData(){
+
+        ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
+        try {
+            values.add(new BasicNameValuePair("need_repair", needRepair.isChecked() ? "yes" : "no"));
+            values.add(new BasicNameValuePair("clean", clean.isChecked() ? "yes" : "no"));
+            values.add(new BasicNameValuePair("board", noBlackboard.getText().toString()));
+            values.add(new BasicNameValuePair("dustbin", noDustbin.getText().toString()));
+            values.add(new BasicNameValuePair("cond_board", Integer.toString((int) starBlackboard.getRating())));
+            values.add(new BasicNameValuePair("color", Integer.toString((int) starColor.getRating())));
+            values.add(new BasicNameValuePair("renovation_comments", comments.getText().toString()));
+        }catch(Exception e){}
+        return values;
     }
 }

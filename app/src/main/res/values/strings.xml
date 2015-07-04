@@ -27,7 +27,7 @@
     <string name="present_bucket">No. of Bucket</string>
     <string name="cond_washroom">Overall condition of washroom</string>
     <string name="flow_basin">Flow of water in Basin</string>
-    <string name="flow_urinal">Flow of water in</string>
+    <string name="flow_urinal">Flow of water in Urinal</string>
     <string name="cond_mirror">Condition of Mirrors</string>
     <string name="drainage_clogging">Drainage Clogging</string>
     <string name="stinking">Stinking</string>
@@ -81,6 +81,9 @@
     <string name="drink_water_area">Drinking Water area</string>
     <string name="how_often">How Often</string>
     <string name="spinner2_text">How often?</string>
+    <string name="spinner3_text">Select School</string>
+    <string name="domain">http://10.0.0.3/</string>
+    <string name="mosquito">Condition of Mosquito net</string>
     <string-array name="volunteerTabs">
         <item>Sanitation</item>
         <item>Water</item>

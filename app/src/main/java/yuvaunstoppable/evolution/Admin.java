@@ -11,8 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.ParseUser;
-
+import yuvaunstoppable.evolution.db.DBHelper;
 import yuvaunstoppable.evolution.fragments.AdminSignUp;
 import yuvaunstoppable.evolution.fragments.AdminView;
 
@@ -63,7 +62,9 @@ public class Admin extends AppCompatActivity{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            ParseUser.logOut();
+//            ParseUser.logOut();
+            DBHelper dbHelper = DBHelper.getInstance(this);
+            dbHelper.logout();
             startActivity(new Intent(Admin.this,Main.class));
             finish();
         }

@@ -14,6 +14,11 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+
 import yuvaunstoppable.evolution.NothingSelectedSpinnerAdapter;
 import yuvaunstoppable.evolution.R;
 
@@ -26,12 +31,12 @@ public class VolunteerWater extends Fragment {
 
     }
 
-    SwitchCompat regularTankCleanWater, purifierProperWater, regularFlowWaterArea, tapLeakageWaterArea, drainCloggWaterArea, isStinkingWaterArea, regularFlowDishWashArea, tapLeakageDishWashArea, drainCloggDishWashArea, isStinkingDishWashArea;
-    EditText fillingFrequencyWater, capacityWater, brokenTapsWaterArea, noOfDustBinsWaterArea, commentsWaterArea, commentsDishWashArea, noOfDustBinsDishWashArea;
-    TextView noOfTapsWaterArea, noOfTapsDishWashArea;
-    RatingBar cleanAroundWaterArea, cleanAroundDishWashArea;
-
-    String[] types = {"1 month", "2 months", "3 months", "6 months", "12 months"};
+    static SwitchCompat regularTankCleanWater, purifierProperWater, regularFlowWaterArea, tapLeakageWaterArea, drainCloggWaterArea, isStinkingWaterArea, regularFlowDishWashArea, tapLeakageDishWashArea, drainCloggDishWashArea, isStinkingDishWashArea;
+    static EditText fillingFrequencyWater, capacityWater, brokenTapsWaterArea, noOfDustBinsWaterArea, commentsWaterArea, commentsDishWashArea, noOfDustBinsDishWashArea;
+    static TextView noOfTapsWaterArea, noOfTapsDishWashArea;
+    static RatingBar cleanAroundWaterArea, cleanAroundDishWashArea;
+    static Spinner how_often_clean;
+    static String[] types = {"1 month", "2 months", "3 months", "6 months", "12 months"};
 
     @Nullable
     @Override
@@ -62,9 +67,37 @@ public class VolunteerWater extends Fragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner2_item, types);
         Log.d("Adapter", String.valueOf(adapter.isEmpty()));
-        final Spinner how_often_clean = (Spinner) layout.findViewById(R.id.how_often_clean);
+        how_often_clean = (Spinner) layout.findViewById(R.id.how_often_clean);
         how_often_clean.setPrompt("Select no. of months");
         how_often_clean.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner2_item, getActivity()));
         return layout;
+    }
+
+    public static ArrayList<NameValuePair> getData(){
+        ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
+        try {
+            values.add(new BasicNameValuePair("reg_clean", regularTankCleanWater.isChecked() ? "yes" : "no"));
+            values.add(new BasicNameValuePair("purifier_proper", purifierProperWater.isChecked() ? "yes" : "no"));
+            values.add(new BasicNameValuePair("freq_fil", fillingFrequencyWater.getText().toString()));
+            values.add(new BasicNameValuePair("capacity_tank", capacityWater.getText().toString()));
+            values.add(new BasicNameValuePair("f_clean_month", types[how_often_clean.getSelectedItemPosition() - 1]));
+
+            values.add(new BasicNameValuePair("reg_flow_water",regularFlowWaterArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("tap_leakage_water",tapLeakageWaterArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("drain_clog_water",drainCloggWaterArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("stinking_water_area",isStinkingWaterArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("reg_flow_dish",regularFlowDishWashArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("tap_leakage_dish",tapLeakageDishWashArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("drain_clog_dish",drainCloggDishWashArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("stinking_dish",isStinkingDishWashArea.isChecked() ? "yes":"no"));
+            values.add(new BasicNameValuePair("broken_taps_water",brokenTapsWaterArea.getText().toString()));
+            values.add(new BasicNameValuePair("dustbins_water",noOfDustBinsWaterArea.getText().toString()));
+            values.add(new BasicNameValuePair("comments_water",commentsWaterArea.getText().toString()));
+            values.add(new BasicNameValuePair("dustbins_dish",noOfDustBinsDishWashArea.getText().toString()));
+            values.add(new BasicNameValuePair("comments_dish",commentsDishWashArea.getText().toString()));
+            values.add(new BasicNameValuePair("clean_water",Integer.toString((int) cleanAroundWaterArea.getRating())));
+            values.add(new BasicNameValuePair("clean_dish",Integer.toString((int) cleanAroundDishWashArea.getRating())));
+        }catch (Exception e){}
+        return values;
     }
 }

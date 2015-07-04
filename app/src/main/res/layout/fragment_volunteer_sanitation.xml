@@ -127,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
                             android:inputType="number"
-                            android:text="@string/present_bucket" />
+                            android:hint="@string/present_bucket" />
 
                         <EditText
                             android:id="@+id/present_tumbler_boys"
@@ -195,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/star_flow_urinal_boys"
-                        android:text="@string/flow_basin" />
+                        android:text="@string/mosquito" />
 
                     <RatingBar
                         android:id="@+id/star_window_boys"
@@ -242,11 +242,18 @@
                         android:layout_below="@id/drainage_clogging_boys"
                         android:text="@string/stinking" />
 
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/roof_boys"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/stinking_boys"
+                        android:text="@string/stinking" />
+
                     <EditText
                         android:id="@+id/no_dustbin_boys"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/stinking_boys"
+                        android:layout_below="@id/roof_boys"
                         android:hint="@string/no_dustbin"
                         android:inputType="number" />
 
@@ -380,7 +387,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.5"
                             android:inputType="number"
-                            android:text="@string/present_bucket" />
+                            android:hint="@string/present_bucket" />
 
                         <EditText
                             android:id="@+id/present_tumbler_girls"
@@ -448,7 +455,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/star_flow_urinal_girls"
-                        android:text="@string/flow_basin" />
+                        android:text="@string/mosquito" />
 
                     <RatingBar
                         android:id="@+id/star_window_girls"
@@ -495,11 +502,18 @@
                         android:layout_below="@id/drainage_clogging_girls"
                         android:text="@string/stinking" />
 
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/roof_girls"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/drainage_clogging_girls"
+                        android:text="@string/stinking" />
+
                     <EditText
                         android:id="@+id/no_dustbin_girls"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/stinking_girls"
+                        android:layout_below="@id/roof_girls"
                         android:hint="@string/no_dustbin"
                         android:inputType="number" />
 

@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+
 import yuvaunstoppable.evolution.R;
 
 /**
@@ -19,7 +24,7 @@ public class VolunteerSweeper extends Fragment {
 
     }
 
-    EditText boys,girls,corridor,campus,water,dishwash,classroom,storageroom,dustbin;
+    static EditText boys,girls,corridor,campus,water,dishwash,classroom,storageroom,dustbin;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,5 +40,21 @@ public class VolunteerSweeper extends Fragment {
         dustbin = (EditText) layout.findViewById(R.id.emptydustbin);
 
         return layout;
+    }
+
+    public static ArrayList<NameValuePair> getData(){
+        ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
+        try {
+            values.add(new BasicNameValuePair("boys", boys.getText().toString()));
+            values.add(new BasicNameValuePair("girls", girls.getText().toString()));
+            values.add(new BasicNameValuePair("corridor", corridor.getText().toString()));
+            values.add(new BasicNameValuePair("campus", campus.getText().toString()));
+            values.add(new BasicNameValuePair("water", water.getText().toString()));
+            values.add(new BasicNameValuePair("dishwash", dishwash.getText().toString()));
+            values.add(new BasicNameValuePair("class", classroom.getText().toString()));
+            values.add(new BasicNameValuePair("storage", storageroom.getText().toString()));
+            values.add(new BasicNameValuePair("dustbin", dustbin.getText().toString()));
+        }catch (Exception e){}
+        return values;
     }
 }

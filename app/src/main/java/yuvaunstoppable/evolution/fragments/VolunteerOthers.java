@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+
 import yuvaunstoppable.evolution.R;
 
 /**
@@ -18,7 +23,7 @@ public class VolunteerOthers extends Fragment {
     public  VolunteerOthers(){
 
     }
-    RatingBar starCleanMidDay,starCleanCampus;
+    static RatingBar starCleanMidDay,starCleanCampus;
 
     @Nullable
     @Override
@@ -29,5 +34,14 @@ public class VolunteerOthers extends Fragment {
         starCleanMidDay = (RatingBar) layout.findViewById(R.id.star_clean_midday);
 
         return layout;
+    }
+
+    public static ArrayList<NameValuePair> getData(){
+        ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
+        try {
+            values.add(new BasicNameValuePair("clean_midday", Integer.toString((int) starCleanMidDay.getRating())));
+            values.add(new BasicNameValuePair("clean_campus", Integer.toString((int) starCleanCampus.getRating())));
+        }catch(Exception e){}
+        return values;
     }
 }

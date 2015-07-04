@@ -55,6 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/clean"
+                    android:inputType="number"
                     android:hint="@string/no_blackboard" />
 
                 <TextView
@@ -79,6 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/star_blackboard"
+                    android:inputType="number"
                     android:hint="@string/no_dustbin" />
 
                 <TextView

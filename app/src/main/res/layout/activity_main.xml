@@ -46,11 +46,29 @@
 
     </LinearLayout>
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/utype"
+        android:layout_below="@id/ll"
+        android:layout_margin="16dp">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin"
+            android:id="@+id/admin"
+            android:checked="true"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volunteer"
+            android:id="@+id/volunteer"/>
+    </RadioGroup>
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll"
+        android:layout_below="@id/utype"
         android:layout_margin="16dp"
         android:text="@string/btnTxt" />
 
