@@ -39,7 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/clean_midday"
                     android:layout_centerHorizontal="true"
-                    android:numStars="3" />
+                    android:numStars="5"
+                    android:stepSize="@integer/size"/>
 
                 <TextView
                     android:id="@+id/clean_campus"
@@ -54,6 +55,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/clean_campus"
                     android:layout_centerHorizontal="true"
+                    android:numStars="5"
+                    android:stepSize="@integer/size"/>
                     android:numStars="3" />
                 <android.support.v7.widget.SwitchCompat
                     android:id="@+id/sound_system"
