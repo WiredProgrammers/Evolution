@@ -1,28 +1,925 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/boys" />
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RatingBar
-                android:id="@+id/a"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--Sanitation Boys-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:isIndicator="true" />
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_margin="@dimen/margin"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/title_boys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/boys"
+                        android:textSize="25sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/boys_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title_boys"
+                        android:visibility="gone">
+
+                        <ToggleButton
+                            android:id="@+id/status_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:textOff="@string/text_on"
+                            android:textOn="@string/text_off" />
+
+
+                        <!--Basins-->
+                        <TextView
+                            android:id="@+id/no_basin_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/status_boys"
+                            android:text="@string/no_basin" />
+
+                        <TextView
+                            android:id="@+id/cond_basin_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_basin_boys"
+                            android:text="@string/cond_basin" />
+
+                        <RatingBar
+                            android:id="@+id/star_basin_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_basin_boys"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--Urinals-->
+
+                        <TextView
+                            android:id="@+id/no_urinals_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_basin_boys"
+                            android:text="@string/no_urinals" />
+
+                        <TextView
+                            android:id="@+id/cond_urinal_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_urinals_boys"
+                            android:text="@string/cond_urinal" />
+
+                        <RatingBar
+                            android:id="@+id/star_urinal_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_urinal_boys"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--Taps-->
+                        <TextView
+                            android:id="@+id/no_taps_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_urinal_boys"
+                            android:text="@string/no_taps" />
+
+
+                        <TextView
+                            android:id="@+id/star_taps_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_taps_boys"
+                            android:hint="@string/cond_taps"
+                            android:inputType="number" />
+
+                        <!--Buckets and Tumblers-->
+                        <TextView
+                            android:id="@+id/no_buck_tumb_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_taps_boys" />
+
+                        <CheckBox
+                            android:id="@+id/same_buck_tumb_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_buck_tumb_boys"
+                            android:enabled="false"
+                            android:text="@string/no_buck_tumb" />
+
+                        <LinearLayout
+                            android:id="@+id/butulayout_boys"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/same_buck_tumb_boys"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/present_bucket_boys"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:hint="@string/present_bucket"
+                                android:inputType="number" />
+
+                            <TextView
+                                android:id="@+id/present_tumbler_boys"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:hint="@string/present_tumbler"
+                                android:inputType="number" />
+
+
+                        </LinearLayout>
+                        <!--Washroom-->
+                        <TextView
+                            android:id="@+id/cond_washroom_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/butulayout_boys"
+                            android:text="@string/cond_washroom" />
+
+                        <RatingBar
+                            android:id="@+id/star_washroom_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_washroom_boys"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--flow of water-->
+                        <TextView
+                            android:id="@+id/tv_flow_basin_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_washroom_boys"
+                            android:text="@string/flow_basin" />
+
+                        <RatingBar
+                            android:id="@+id/star_flow_basin_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_flow_basin_boys"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <TextView
+                            android:id="@+id/tv_flow_urinal_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_flow_basin_boys"
+                            android:text="@string/flow_urinal" />
+
+                        <RatingBar
+                            android:id="@+id/star_flow_urinal_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_flow_urinal_boys"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--window and mirror-->
+                        <TextView
+                            android:id="@+id/cond_window_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_flow_urinal_boys"
+                            android:text="@string/mosquito" />
+
+                        <RatingBar
+                            android:id="@+id/star_window_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_window_boys"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <TextView
+                            android:id="@+id/no_mirror_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_window_boys" />
+
+                        <TextView
+                            android:id="@+id/cond_mirror_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_mirror_boys"
+                            android:text="@string/cond_mirror" />
+
+                        <RatingBar
+                            android:id="@+id/star_mirror_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_mirror_boys"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/drainage_clogging_boys"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_mirror_boys"
+                            android:enabled="false"
+                            android:text="@string/drainage_clogging" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/stinking_boys"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/drainage_clogging_boys"
+                            android:enabled="false"
+                            android:text="@string/stinking" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/roof_boys"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/stinking_boys"
+                            android:enabled="false"
+                            android:text="@string/stinking" />
+
+                        <TextView
+                            android:id="@+id/no_dustbin_boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/roof_boys"
+                            android:hint="@string/no_dustbin"
+                            android:inputType="number" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/latch_doors_boys"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_dustbin_boys"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/latch_doors" />
+
+                        <TextView
+                            android:id="@+id/comments_boys"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/latch_doors_boys"
+                            android:hint="@string/comments"
+                            android:inputType="textMultiLine" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <!--Sanitation Girls-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/title_girls"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/girls"
+                        android:textSize="25sp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/girls_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title_girls"
+                        android:visibility="gone">
+
+                        <ToggleButton
+                            android:id="@+id/status_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:textOff="@string/text_on"
+                            android:textOn="@string/text_off" />
+
+                        <!--Basins-->
+                        <TextView
+                            android:id="@+id/no_basin_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/status_girls"
+                            android:text="@string/no_basin" />
+
+                        <TextView
+                            android:id="@+id/cond_basin_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_basin_girls"
+                            android:text="@string/cond_basin" />
+
+                        <RatingBar
+                            android:id="@+id/star_basin_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_basin_girls"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--Urinals-->
+
+                        <TextView
+                            android:id="@+id/no_urinals_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_basin_girls"
+                            android:text="@string/no_urinals" />
+
+                        <TextView
+                            android:id="@+id/cond_urinal_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_urinals_girls"
+                            android:text="@string/cond_urinal" />
+
+                        <RatingBar
+                            android:id="@+id/star_urinal_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_urinal_girls"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--Taps-->
+                        <TextView
+                            android:id="@+id/no_taps_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_urinal_girls"
+                            android:text="@string/no_taps" />
+
+
+                        <TextView
+                            android:id="@+id/star_taps_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_taps_girls"
+                            android:hint="@string/cond_taps"
+                            android:inputType="number" />
+
+                        <!--Buckets and Tumblers-->
+                        <TextView
+                            android:id="@+id/no_buck_tumb_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_taps_girls" />
+
+                        <CheckBox
+                            android:id="@+id/same_buck_tumb_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_buck_tumb_girls"
+                            android:enabled="false"
+                            android:text="@string/no_buck_tumb" />
+
+                        <LinearLayout
+                            android:id="@+id/butulayout_girls"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/same_buck_tumb_girls"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/present_bucket_girls"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:hint="@string/present_bucket"
+                                android:inputType="number" />
+
+                            <TextView
+                                android:id="@+id/present_tumbler_girls"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:hint="@string/present_tumbler"
+                                android:inputType="number" />
+
+
+                        </LinearLayout>
+                        <!--Washroom-->
+                        <TextView
+                            android:id="@+id/cond_washroom_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/butulayout_girls"
+                            android:text="@string/cond_washroom" />
+
+                        <RatingBar
+                            android:id="@+id/star_washroom_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_washroom_girls"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--flow of water-->
+                        <TextView
+                            android:id="@+id/tv_flow_basin_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_washroom_girls"
+                            android:text="@string/flow_basin" />
+
+                        <RatingBar
+                            android:id="@+id/star_flow_basin_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_flow_basin_girls"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <TextView
+                            android:id="@+id/tv_flow_urinal_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_flow_basin_girls"
+                            android:text="@string/flow_urinal" />
+
+                        <RatingBar
+                            android:id="@+id/star_flow_urinal_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_flow_urinal_girls"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--window and mirror-->
+                        <TextView
+                            android:id="@+id/cond_window_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_flow_urinal_girls"
+                            android:text="@string/mosquito" />
+
+                        <RatingBar
+                            android:id="@+id/star_window_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_window_girls"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <TextView
+                            android:id="@+id/no_mirror_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_window_girls" />
+
+                        <TextView
+                            android:id="@+id/cond_mirror_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_mirror_girls"
+                            android:text="@string/cond_mirror" />
+
+                        <RatingBar
+                            android:id="@+id/star_mirror_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_mirror_girls"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/drainage_clogging_girls"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_mirror_girls"
+                            android:enabled="false"
+                            android:text="@string/drainage_clogging" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/stinking_girls"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/drainage_clogging_girls"
+                            android:enabled="false"
+                            android:text="@string/stinking" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/roof_girls"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/drainage_clogging_girls"
+                            android:enabled="false"
+                            android:text="@string/stinking" />
+
+                        <TextView
+                            android:id="@+id/no_dustbin_girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/roof_girls"
+                            android:hint="@string/no_dustbin"
+                            android:inputType="number" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/latch_doors_girls"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_dustbin_girls"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/latch_doors" />
+
+                        <TextView
+                            android:id="@+id/comments_girls"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/latch_doors_girls"
+                            android:hint="@string/comments"
+                            android:inputType="textMultiLine" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <!--water-->
+
+            <android.support.v7.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <!--Water Tank And Water Purifier-->
+                    <TextView
+                        android:id="@+id/water_tank_purifier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/water_tank_purifier"
+                        android:textSize="25sp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/water_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/water_tank_purifier"
+                        android:visibility="gone">
+
+                        <ToggleButton
+                            android:id="@+id/status_wt_purifier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:textOff="@string/text_on"
+                            android:textOn="@string/text_off" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/regularity_cleaning_tank"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/status_wt_purifier"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/reg_clean_tank" />
+
+                        <Spinner
+                            android:id="@+id/how_often_clean"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/regularity_cleaning_tank"
+                            android:layout_margin="@dimen/margin"></Spinner>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/water_pure_proper"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/how_often_clean"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/water_purifier" />
+
+
+                        <TextView
+                            android:id="@+id/fill_tank_freq_ans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/water_pure_proper"
+                            android:hint="@string/filling_tank_freq"
+                            android:inputType="number" />
+
+
+                        <TextView
+                            android:id="@+id/water_tank_capacity_ans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/fill_tank_freq_ans"
+                            android:hint="@string/water_tank_capacity"
+                            android:inputType="number" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/drinking_water_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/drink_water_area"
+                        android:textSize="25sp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/drinking_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/drinking_water_area"
+                        android:visibility="gone">
+
+                        <ToggleButton
+                            android:id="@+id/status_dw_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:textOff="@string/text_on"
+                            android:textOn="@string/text_off" />
+
+                        <TextView
+                            android:id="@+id/no_of_taps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/status_dw_area"
+                            android:text="@string/water_no_taps" />
+
+                        <TextView
+                            android:id="@+id/broken_taps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/no_of_taps"
+                            android:hint="@string/water_broken_taps"
+                            android:inputType="number" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/regular_flow_water"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/broken_taps"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/water_reg_flow" />
+
+                        <TextView
+                            android:id="@+id/clean_around_water_area_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/regular_flow_water"
+                            android:text="@string/cleanliness_around_drink_area" />
+
+                        <RatingBar
+                            android:id="@+id/clean_around_water_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/clean_around_water_area_text"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/tap_Leakage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/clean_around_water_area"
+                            android:enabled="false"
+                            android:text="@string/tap_leakage" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/drain_clogg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tap_Leakage"
+                            android:enabled="false"
+                            android:text="@string/drain_clogging" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/stinking"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/drain_clogg"
+                            android:enabled="false"
+                            android:text="@string/stinking_in_drink_area" />
+
+                        <TextView
+                            android:id="@+id/no_of_dustbins"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/stinking"
+                            android:hint="@string/no_dustbin"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/water_comments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/no_of_dustbins"
+                            android:hint="@string/comment"
+                            android:inputType="textMultiLine" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/dishwasing_areaa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dishwash_text"
+                        android:textSize="25sp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/dishwash_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dishwasing_areaa"
+                        android:visibility="gone">
+
+                        <ToggleButton
+                            android:id="@+id/status_dish_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:textOff="@string/text_on"
+                            android:textOn="@string/text_off" />
+
+                        <TextView
+                            android:id="@+id/no_taps_dish_wash_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/status_dish_area"
+                            android:text="@string/dish_wash_no_of_taps" />
+
+                        <TextView
+                            android:id="@+id/no_taps_broken"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/no_taps_dish_wash_area"
+                            android:text="@string/dishwash_area_broken_taps" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/reg_flow_water"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/no_taps_broken"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/regular_flow_water" />
+
+                        <TextView
+                            android:id="@+id/clean_around_water_area_textt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/reg_flow_water"
+                            android:text="@string/clean_around_dish_wash_area" />
+
+                        <RatingBar
+                            android:id="@+id/clean_around_dish_wash_areaa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/clean_around_water_area_textt"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/leakage_of_taps"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/clean_around_dish_wash_areaa"
+                            android:enabled="false"
+                            android:text="@string/tap_leakage_dishwash_area" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/drainnage_clogging"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/leakage_of_taps"
+                            android:enabled="false"
+                            android:text="@string/drain_clogg_dish_wash_area" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/Stinking_dish_wash_area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/drainnage_clogging"
+                            android:enabled="false"
+                            android:text="@string/stinking" />
+
+                        <TextView
+                            android:id="@+id/no_of_dustbin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/Stinking_dish_wash_area"
+                            android:hint="@string/no_dustbin"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/dish_wash_comments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/no_of_dustbin"
+                            android:hint="@string/comment"
+                            android:inputType="textMultiLine" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
