@@ -82,6 +82,7 @@
     <string name="how_often">How Often</string>
     <string name="spinner2_text">How often?</string>
     <string name="spinner3_text">Select School</string>
+    <string name="spinner4_text">Select Date</string>
     <string name="domain">http://192.168.0.104/</string>
     <string name="mosquito">Condition of Mosquito net</string>
     <string name="text_on">New</string>

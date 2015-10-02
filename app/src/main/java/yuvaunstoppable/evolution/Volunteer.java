@@ -131,7 +131,6 @@ public class Volunteer extends AppCompatActivity {
 
         if (null == (mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE)))
             finish();
-        mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
 
         mLocationListener = new LocationListener() {
 
@@ -177,6 +176,8 @@ public class Volunteer extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mBestReading = bestLastKnownLocation(MIN_LAST_READ_ACCURACY, FIVE_MIN);
 
                 values.addAll(VolunteerCampusRenovation.getData());
                 values.addAll(VolunteerOthers.getData());
