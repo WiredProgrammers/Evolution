@@ -80,7 +80,8 @@
                     android:layout_below="@id/cond_blackboard"
                     android:layout_centerHorizontal="true"
                     android:numStars="5"
-                    android:stepSize="@integer/size"/>
+                    android:stepSize="@integer/size"
+                    android:clickable="false"/>
 
                 <!--dustbins-->
                 <EditText
