@@ -18,6 +18,7 @@ public class AdminView extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_adminview, container, false);
 
+
         return layout;
     }
 }
