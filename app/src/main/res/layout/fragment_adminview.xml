@@ -322,7 +322,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/girls"
-                        android:textSize="25sp"/>
+                        android:textSize="25sp" />
 
                     <RelativeLayout
                         android:id="@+id/girls_view"
@@ -614,7 +614,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/water_tank_purifier"
-                        android:textSize="25sp"/>
+                        android:textSize="25sp" />
 
                     <RelativeLayout
                         android:id="@+id/water_view"
@@ -698,7 +698,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/drink_water_area"
-                        android:textSize="25sp"/>
+                        android:textSize="25sp" />
 
                     <RelativeLayout
                         android:id="@+id/drinking_view"
@@ -819,7 +819,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/dishwash_text"
-                        android:textSize="25sp"/>
+                        android:textSize="25sp" />
 
                     <RelativeLayout
                         android:id="@+id/dishwash_view"
@@ -920,6 +920,355 @@
             </android.support.v7.widget.CardView>
 
 
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/cond_shade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Campus Renovation"
+                        android:textSize="25sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/shade_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cond_shade"
+                        android:visibility="gone">
+
+                        <ToggleButton
+                            android:id="@+id/status_shade"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:textOff="@string/text_on"
+                            android:textOn="@string/text_off" />
+
+
+                        <CheckBox
+                            android:id="@+id/need_repair"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/status_shade"
+                            android:layout_marginLeft="5dp"
+                            android:clickable="false"
+                            android:enabled="false"
+                            android:text="@string/need_repair" />
+
+                        <CheckBox
+                            android:id="@+id/clean"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/need_repair"
+                            android:layout_marginLeft="5dp"
+                            android:clickable="false"
+                            android:enabled="false"
+                            android:text="@string/isclean" />
+
+                        <!--blackboard-->
+                        <TextView
+                            android:id="@+id/no_blackboard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/clean"
+                            android:enabled="false"
+                            android:hint="@string/no_blackboard"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/cond_blackboard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_blackboard"
+                            android:enabled="false"
+                            android:text="@string/cond_blackboard" />
+
+                        <RatingBar
+                            android:id="@+id/star_blackboard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_blackboard"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <!--dustbins-->
+                        <TextView
+                            android:id="@+id/no_dustbin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_blackboard"
+                            android:enabled="false"
+                            android:hint="@string/no_dustbin"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/cond_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/no_dustbin"
+                            android:enabled="false"
+                            android:text="@string/cond_color" />
+
+                        <RatingBar
+                            android:id="@+id/star_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cond_color"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <TextView
+                            android:id="@+id/comments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_color"
+                            android:enabled="false"
+                            android:hint="@string/comments"
+                            android:inputType="textMultiLine" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <!-- new starts here -->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/clean_midday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Others"
+                        android:textSize="25sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/other_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/clean_midday"
+                        android:visibility="gone">
+
+                        <RatingBar
+                            android:id="@+id/star_clean_midday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <TextView
+                            android:id="@+id/clean_campus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/star_clean_midday"
+                            android:enabled="false"
+                            android:text="@string/clean_campus" />
+
+                        <RatingBar
+                            android:id="@+id/star_clean_campus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/clean_campus"
+                            android:layout_centerHorizontal="true"
+                            android:clickable="false"
+                            android:numStars="5"
+                            android:stepSize="@integer/size" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/sound_system"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/star_clean_campus"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/sound_system" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/kitchen_midday_meals"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sound_system"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/kitchen_midday_meals" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/sports_kits"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/kitchen_midday_meals"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/sports_kits" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/books_stationery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sports_kits"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/book_stationery" />
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:id="@+id/amenities_cultural"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/books_stationery"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:text="@string/amenities_culutural" />
+
+                        <TextView
+                            android:id="@+id/other_comments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/amenities_cultural"
+                            android:enabled="false"
+                            android:hint="@string/other_comments"
+                            android:inputType="textMultiLine" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <!--newest start here-->
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="Sweeper"
+                        android:textSize="25sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/sweeper_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/label"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/boys"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:hint="@string/boys"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/girls"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/boys"
+                            android:enabled="false"
+                            android:hint="@string/girls"
+                            android:inputType="number" />
+
+
+                        <TextView
+                            android:id="@+id/corridor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/girls"
+                            android:enabled="false"
+                            android:hint="@string/corridor"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/campus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/corridor"
+                            android:enabled="false"
+                            android:hint="@string/campus"
+                            android:inputType="number" />
+
+
+                        <TextView
+                            android:id="@+id/water"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/campus"
+                            android:enabled="false"
+                            android:hint="@string/water"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/dishwash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/water"
+                            android:enabled="false"
+                            android:hint="@string/dishwash"
+                            android:inputType="number" />
+
+
+                        <TextView
+                            android:id="@+id/classroom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/dishwash"
+                            android:enabled="false"
+                            android:hint="@string/classroom"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/storageroom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/classroom"
+                            android:enabled="false"
+                            android:hint="@string/storageroom"
+                            android:inputType="number" />
+
+                        <TextView
+                            android:id="@+id/emptydustbin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/storageroom"
+                            android:enabled="false"
+                            android:hint="@string/emptydustbin"
+                            android:inputType="number" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
