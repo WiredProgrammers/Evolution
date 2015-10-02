@@ -21,7 +21,8 @@
                 android:id="@+id/cond_shade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cond_shade" />
+                android:text="@string/cond_shade"
+                android:textSize="20sp"/>
 
             <ToggleButton
                 android:id="@+id/status_shade"
@@ -139,7 +140,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="@string/clean_midday" />
+                android:text="@string/clean_midday"
+                android:textSize="20sp"/>
 
             <RatingBar
                 android:id="@+id/star_clean_midday"
@@ -242,7 +244,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="@string/label" />
+                android:text="@string/label"
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/boys"
