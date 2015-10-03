@@ -21,7 +21,8 @@ import android.widget.ToggleButton;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -32,9 +33,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import yuvaunstoppable.evolution.NothingSelectedSpinnerAdapter;
@@ -45,7 +44,6 @@ import yuvaunstoppable.evolution.School;
  * Created by Yash on 03-Jun-15.
  */
 public class AdminView extends Fragment {
-    ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
     static TextView noBasinGirls, noUrinalsGirls, noTapsGirls, noMirrorGirls;
     static RatingBar starBasinGirls, starUrinalGirls, starWashroomGirls, starFlowBasinGirls, starFlowUrinalGirls, starWindowGirls, starMirrorGirls;
     static EditText starTapsGirls, noTumbGirls, noBuckGirls, commentsGirls;
@@ -62,7 +60,6 @@ public class AdminView extends Fragment {
     static Spinner how_often_clean;
     static ToggleButton statusWtPurifier, statusDishArea, StatusDwArea;
     static String[] types = {"1 month", "2 months", "3 months", "6 months", "12 months"};
-
     static TextView noBasinBoys, noUrinalsBoys, noTapsBoys, noMirrorBoys;
     static RatingBar starBasinBoys, starUrinalBoys, starWashroomBoys, starFlowBasinBoys, starFlowUrinalBoys, starWindowBoys, starMirrorBoys;
     static EditText starTapsBoys, noTumbBoys, noBuckBoys, commentsBoys;
@@ -73,11 +70,172 @@ public class AdminView extends Fragment {
     static EditText noBlackboard,noDustbin,comments;
     static RatingBar starBlackboard,starColor;
     static ToggleButton statusShade;
+    ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
+    int scl_id;
+    String date;
+    List<School> list = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_adminview, container, false);
+        scl_id = savedInstanceState.getInt("scl_id");
+        date = savedInstanceState.getString("date");
+        new Fetch().execute((Void) null);
+
+        final View boysView = layout.findViewById(R.id.boys_view);
+        final View girlsView = layout.findViewById(R.id.girls_view);
+        final View waterView = layout.findViewById(R.id.water_view);
+        final View drinkingView = layout.findViewById(R.id.drinking_view);
+        final View dishwashView = layout.findViewById(R.id.dishwash_view);
+        final View shadeView = layout.findViewById(R.id.shade_view);
+        final View otherView = layout.findViewById(R.id.other_view);
+        final View sweeperView = layout.findViewById(R.id.sweeper_view);
+        View card1 = layout.findViewById(R.id.card1);
+        card1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (boysView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.VISIBLE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.GONE);
+                } else {
+                    boysView.setVisibility(View.GONE);
+                }
+            }
+        });
+        View card2 = layout.findViewById(R.id.card2);
+        card2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (girlsView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.VISIBLE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.GONE);
+                } else {
+                    girlsView.setVisibility(View.GONE);
+                }
+            }
+        });
+        View card3 = layout.findViewById(R.id.card3);
+        card3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (waterView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.VISIBLE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.GONE);
+                } else {
+                    waterView.setVisibility(View.GONE);
+                }
+            }
+        });
+        View card4 = layout.findViewById(R.id.card4);
+        card4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (drinkingView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.VISIBLE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.GONE);
+                } else {
+                    drinkingView.setVisibility(View.GONE);
+                }
+            }
+        });
+        View card5 = layout.findViewById(R.id.card5);
+        card5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (dishwashView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.VISIBLE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.GONE);
+                } else {
+                    dishwashView.setVisibility(View.GONE);
+                }
+            }
+        });
+        View card6 = layout.findViewById(R.id.card6);
+        card6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (shadeView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.VISIBLE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.GONE);
+                } else {
+                    shadeView.setVisibility(View.GONE);
+                }
+            }
+        });
+        View card7 = layout.findViewById(R.id.card7);
+        card7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (otherView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.VISIBLE);
+                    sweeperView.setVisibility(View.GONE);
+                } else {
+                    otherView.setVisibility(View.GONE);
+                }
+            }
+        });
+        View card8 = layout.findViewById(R.id.card8);
+        card8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (sweeperView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.VISIBLE);
+                } else {
+                    sweeperView.setVisibility(View.GONE);
+                }
+            }
+        });
+
         noBasinGirls = (TextView) layout.findViewById(R.id.no_basin_girls);
         noUrinalsGirls = (TextView) layout.findViewById(R.id.no_urinals_girls);
         noTapsGirls = (TextView) layout.findViewById(R.id.no_taps_girls);
@@ -184,7 +342,7 @@ public class AdminView extends Fragment {
         return layout;
 
     }
-    List<School> list = new ArrayList<>();
+
     class Fetch extends AsyncTask<Void, Void, Void> {
         ProgressDialog progressDialog;
 
@@ -206,11 +364,12 @@ public class AdminView extends Fragment {
             String response = null;
             try {
 
-                HttpGet httpGet = new HttpGet(getResources().getString(R.string.domain) + "fetch_data.php");
-
+                HttpPost httpGet = new HttpPost(getResources().getString(R.string.domain) + "fetch_data.php");
+                List<BasicNameValuePair> send = new ArrayList<>();
+                send.add(new BasicNameValuePair("scl_id", Integer.toString(scl_id)));
+                send.add(new BasicNameValuePair("date", date));
+                httpGet.setEntity(new UrlEncodedFormEntity(send));
                 httpResponse = httpClient.execute(httpGet);
-
-
                 httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
 

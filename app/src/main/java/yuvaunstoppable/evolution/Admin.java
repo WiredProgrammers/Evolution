@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,11 +14,12 @@ import android.view.MenuItem;
 import yuvaunstoppable.evolution.db.DBHelper;
 import yuvaunstoppable.evolution.fragments.AdminSignUp;
 import yuvaunstoppable.evolution.fragments.AdminView;
+import yuvaunstoppable.evolution.fragments.AdminView2;
 
 /**
  * Created by Yash on 29-May-15.
  */
-public class Admin extends AppCompatActivity{
+public class Admin extends AppCompatActivity {
 
     Intent i;
     String user;
@@ -48,21 +49,15 @@ public class Admin extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.logout, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-//            ParseUser.logOut();
             DBHelper dbHelper = DBHelper.getInstance(this);
             dbHelper.logout();
             startActivity(new Intent(Admin.this,Main.class));
@@ -71,25 +66,35 @@ public class Admin extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
-    class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
+
+    class ViewPagerAdapter extends FragmentPagerAdapter implements AdminView2.selectionDoneListener {
+
+        private final FragmentManager mFragmentManager;
         String[] tabs;
+        private Fragment fragmentA;
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
+            mFragmentManager = fm;
             tabs=getResources().getStringArray(R.array.adminTabs);
         }
 
         @Override
+        public void onDone(int scl_id, String date) {
+
+
+        }
+
+        @Override
         public Fragment getItem(int position) {
-            Fragment fragment = null;
             if(position == 1){
-                fragment = new AdminSignUp();
+                return new AdminSignUp();
             }
             if(position == 0){
-                fragment = new AdminView();
+                return new AdminView();
             }
 
-            return fragment;
+            return null;
         }
 
         @Override

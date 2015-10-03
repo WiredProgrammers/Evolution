@@ -1,10 +1,11 @@
 package yuvaunstoppable.evolution.fragments;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import android.widget.Spinner;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -35,8 +35,6 @@ import java.util.List;
 import yuvaunstoppable.evolution.NothingSelectedSpinnerAdapter;
 import yuvaunstoppable.evolution.R;
 import yuvaunstoppable.evolution.School;
-import yuvaunstoppable.evolution.Volunteer;
-import yuvaunstoppable.evolution.VolunteerSchool;
 
 /**
  * Created by amit on 02-Oct-15.
@@ -48,6 +46,20 @@ public class AdminView2 extends Fragment {
     String[] dates = null;
     Spinner scl_id,date;
     int scl;
+
+    selectionDoneListener mCallback;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallback = (selectionDoneListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_adminview2, container, false);
 
@@ -59,7 +71,7 @@ public class AdminView2 extends Fragment {
         scl_id.setPrompt("Select School");
         date.setPrompt("Select Date");
         scl_id.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
-        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner4_item, getActivity()));
+        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter1, R.layout.spinner4_item, getActivity()));
         scl_id.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -77,12 +89,50 @@ public class AdminView2 extends Fragment {
         date.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                Fragment fragmentA = new AdminView();
+                Bundle args = new Bundle();
+                args.putInt("scl_id", scl);
+                args.putString("date", dates[i]);
+                fragmentA.setArguments(args);
+                FragmentTransaction trans = getFragmentManager()
+                        .beginTransaction();
+                trans.replace(R.id.root_frame, fragmentA);
+                trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//                trans.addToBackStack();
+                trans.commit();
             }
         });
 
 
         return layout;
+    }
+
+    private void populateSpinner() {
+        List<String> lables = new ArrayList<String>();
+
+        for (int i = 0; i < list.size(); i++) {
+            lables.add(list.get(i).getScl_name());
+        }
+        Log.d("string", lables.toString());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner3_item, lables);
+        date.setPrompt("Select School");
+        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
+    }
+
+    private void populateSpinnerDate() {
+        List<String> lables = new ArrayList<String>();
+
+        for (int i = 0; i < dates.length; i++) {
+            lables.add(list.get(i).getScl_name());
+        }
+        Log.d("string", lables.toString());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner3_item, lables);
+        date.setPrompt("Select School");
+        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
+    }
+
+    public interface selectionDoneListener {
+        void onDone(int scl_id, String date);
     }
 
     class FetchSchool extends AsyncTask<Void, Void, Void> {
@@ -136,10 +186,10 @@ public class AdminView2 extends Fragment {
                 if (jsonObj != null) {
                     for (int i = 0; i < jsonObj.length(); i++) {
                         JSONObject json = (JSONObject) jsonObj.get(i);
-                        list.add(new School(json.getString("name"),json.getInt("id")));
+                        list.add(new School(json.getString("name"), json.getInt("id")));
                     }
                 }
-                Log.d("response",list.toString());
+                Log.d("response", list.toString());
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -162,7 +212,7 @@ public class AdminView2 extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog =  new ProgressDialog(getActivity());
+            progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Fetching Records");
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -208,10 +258,10 @@ public class AdminView2 extends Fragment {
                     dates = new String[jsonObj.length()];
                     for (int i = 0; i < jsonObj.length(); i++) {
                         JSONObject json = (JSONObject) jsonObj.get(i);
-                        dates[i]=json.getString("date");
+                        dates[i] = json.getString("date");
                     }
                 }
-                Log.d("response",dates.toString());
+                Log.d("response", dates.toString());
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -226,29 +276,5 @@ public class AdminView2 extends Fragment {
             populateSpinnerDate();
             progressDialog.dismiss();
         }
-    }
-
-    private void populateSpinner() {
-        List<String> lables = new ArrayList<String>();
-
-        for (int i = 0; i < list.size(); i++) {
-            lables.add(list.get(i).getScl_name());
-        }
-        Log.d("string", lables.toString());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner3_item, lables);
-        date.setPrompt("Select School");
-        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
-    }
-
-    private void populateSpinnerDate() {
-        List<String> lables = new ArrayList<String>();
-
-        for (int i = 0; i < dates.length; i++) {
-            lables.add(list.get(i).getScl_name());
-        }
-        Log.d("string", lables.toString());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner3_item, lables);
-        date.setPrompt("Select School");
-        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
     }
 }
