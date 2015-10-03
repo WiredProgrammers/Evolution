@@ -13,8 +13,7 @@ import android.view.MenuItem;
 
 import yuvaunstoppable.evolution.db.DBHelper;
 import yuvaunstoppable.evolution.fragments.AdminSignUp;
-import yuvaunstoppable.evolution.fragments.AdminView;
-import yuvaunstoppable.evolution.fragments.AdminView2;
+import yuvaunstoppable.evolution.fragments.AdminViewRoot;
 
 /**
  * Created by Yash on 29-May-15.
@@ -68,7 +67,7 @@ public class Admin extends AppCompatActivity {
     }
 
 
-    class ViewPagerAdapter extends FragmentPagerAdapter implements AdminView2.selectionDoneListener {
+    class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private final FragmentManager mFragmentManager;
         String[] tabs;
@@ -80,18 +79,12 @@ public class Admin extends AppCompatActivity {
         }
 
         @Override
-        public void onDone(int scl_id, String date) {
-
-
-        }
-
-        @Override
         public Fragment getItem(int position) {
             if(position == 1){
                 return new AdminSignUp();
             }
             if(position == 0){
-                return new AdminView();
+                return new AdminViewRoot();
             }
 
             return null;

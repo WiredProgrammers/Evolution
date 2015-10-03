@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import android.widget.ToggleButton;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -34,7 +32,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,7 +43,6 @@ import yuvaunstoppable.evolution.School;
  * Created by Yash on 03-Jun-15.
  */
 public class AdminView extends Fragment {
-    HashMap<String,String> values = new HashMap<>();
     static TextView noBasinGirls, noUrinalsGirls, noTapsGirls, noMirrorGirls;
     static RatingBar starBasinGirls, starUrinalGirls, starWashroomGirls, starFlowBasinGirls, starFlowUrinalGirls, starWindowGirls, starMirrorGirls;
     static TextView starTapsGirls, noTumbGirls, noBuckGirls, commentsGirls;
@@ -73,7 +69,7 @@ public class AdminView extends Fragment {
     static TextView noBlackboard,noDustbin,comments;
     static RatingBar starBlackboard,starColor;
     static ToggleButton statusShade;
-    ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
+    HashMap<String, String> values = new HashMap<>();
     int scl_id;
     String date;
     List<School> list = new ArrayList<>();
@@ -82,8 +78,9 @@ public class AdminView extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_adminview, container, false);
-        scl_id = savedInstanceState.getInt("scl_id");
-        date = savedInstanceState.getString("date");
+        Bundle bundle = this.getArguments();
+        scl_id = bundle.getInt("scl_id");
+        date = bundle.getString("date");
         new Fetch().execute((Void) null);
 
         final View boysView = layout.findViewById(R.id.boys_view);

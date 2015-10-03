@@ -1,6 +1,5 @@
 package yuvaunstoppable.evolution.fragments;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -43,22 +42,10 @@ public class AdminView2 extends Fragment {
 
     String[] school = {"Select School"}, da={"Select Date"};
     List<School> list = new ArrayList<>();
-    String[] dates = null;
+    String[] dates;
     Spinner scl_id,date;
     int scl;
 
-    selectionDoneListener mCallback;
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mCallback = (selectionDoneListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnHeadlineSelectedListener");
-        }
-    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_adminview2, container, false);
@@ -76,7 +63,7 @@ public class AdminView2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
-                    scl = list.get(position).getScl_id();
+                    scl = list.get(position - 1).getScl_id();
                     new FetchDate().execute((Void) null);
                 }
             }
@@ -86,21 +73,29 @@ public class AdminView2 extends Fragment {
 
             }
         });
-        date.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        date.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Fragment fragmentA = new AdminView();
-                Bundle args = new Bundle();
-                args.putInt("scl_id", scl);
-                args.putString("date", dates[i]);
-                fragmentA.setArguments(args);
-                FragmentTransaction trans = getFragmentManager()
-                        .beginTransaction();
-                trans.replace(R.id.root_frame, fragmentA);
-                trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i != 0) {
+                    Fragment fragmentA = new AdminView();
+                    Bundle args = new Bundle();
+                    args.putInt("scl_id", scl);
+                    args.putString("date", dates[i - 1]);
+                    fragmentA.setArguments(args);
+                    FragmentTransaction trans = getFragmentManager()
+                            .beginTransaction();
+                    trans.replace(R.id.root_frame, fragmentA);
+                    trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 //                trans.addToBackStack();
-                trans.commit();
+                    trans.commit();
+                }
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
         });
 
 
@@ -115,24 +110,20 @@ public class AdminView2 extends Fragment {
         }
         Log.d("string", lables.toString());
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner3_item, lables);
-        date.setPrompt("Select School");
-        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
+        scl_id.setPrompt("Select School");
+        scl_id.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
     }
 
     private void populateSpinnerDate() {
         List<String> lables = new ArrayList<String>();
 
         for (int i = 0; i < dates.length; i++) {
-            lables.add(list.get(i).getScl_name());
+            lables.add(dates[i]);
         }
         Log.d("string", lables.toString());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner3_item, lables);
-        date.setPrompt("Select School");
-        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
-    }
-
-    public interface selectionDoneListener {
-        void onDone(int scl_id, String date);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.spinner4_item, lables);
+        date.setPrompt("Select Date");
+        date.setAdapter(new NothingSelectedSpinnerAdapter(adapter1, R.layout.spinner4_item, getActivity()));
     }
 
     class FetchSchool extends AsyncTask<Void, Void, Void> {
