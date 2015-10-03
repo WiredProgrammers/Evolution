@@ -16,6 +16,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -67,10 +75,44 @@ public class AdminView extends Fragment {
     static TextView noBlackboard,noDustbin,comments;
     static RatingBar starBlackboard,starColor;
     static ToggleButton statusShade;
+    GoogleMap mMap;
     HashMap<String, String> values = new HashMap<>();
     int scl_id;
     String date, scl_name;
     List<School> list = new ArrayList<>();
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setUpMapIfNeeded();
+    }
+
+    private void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (mMap == null) {
+            // Try to obtain the map from the SupportMapFragment.
+            mMap = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map))
+                    .getMap();
+            // Check if we were successful in obtaining the map.
+            if (mMap != null) {
+                setUpMap(Double.parseDouble(values.get("lat")), Double.parseDouble(values.get("lon")));
+            }
+        }
+    }
+
+    private void setUpMap(double lat, double lon) {
+        LatLngBounds.Builder boundsBuilder = new LatLngBounds.Builder();
+        boundsBuilder.include(new LatLng(0, 0));
+        boundsBuilder.include(new LatLng(lat, lon));
+// pan to see all markers on map:
+        LatLngBounds bounds = boundsBuilder.build();
+        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(values.get("uname")));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .zoom(16)
+                .target(new LatLng(lat, lon))
+                .build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
 
     @Nullable
     @Override
@@ -409,6 +451,7 @@ public class AdminView extends Fragment {
                     JSONObject json1 = (JSONObject) jsonObj.get(2); //location : 2
                     values.put("lat", json1.getString("lat"));
                     values.put("lon", json1.getString("lon"));
+                    values.put("uname", json1.getString("uname"));
 
 
 
@@ -521,6 +564,9 @@ public class AdminView extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            setText();
+            setUpMap(Double.parseDouble(values.get("lat")), Double.parseDouble(values.get("lon")));
 
             return null;
         }
