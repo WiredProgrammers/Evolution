@@ -45,6 +45,7 @@ public class AdminView2 extends Fragment {
     String[] dates;
     Spinner scl_id,date;
     int scl;
+    String scl_name;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class AdminView2 extends Fragment {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), R.layout.spinner4_item,da);
         scl_id.setPrompt("Select School");
         date.setPrompt("Select Date");
+
         scl_id.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, getActivity()));
         date.setAdapter(new NothingSelectedSpinnerAdapter(adapter1, R.layout.spinner4_item, getActivity()));
         scl_id.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -64,6 +66,7 @@ public class AdminView2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
                     scl = list.get(position - 1).getScl_id();
+                    scl_name = list.get(position - 1).getScl_name();
                     new FetchDate().execute((Void) null);
                 }
             }
@@ -81,6 +84,7 @@ public class AdminView2 extends Fragment {
                     Bundle args = new Bundle();
                     args.putInt("scl_id", scl);
                     args.putString("date", dates[i - 1]);
+                    args.putString("scl_name", scl_name);
                     fragmentA.setArguments(args);
                     FragmentTransaction trans = getFragmentManager()
                             .beginTransaction();

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,9 +36,9 @@
                         android:text="@string/water_tank_purifier" />
                     <ToggleButton
                         android:id="@+id/status_wt_purifier"
-                        android:layout_below="@+id/water_tank_purifier"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/water_tank_purifier"
                         android:textOff="@string/text_on"
                         android:textOn="@string/text_off"/>
 
@@ -55,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/regularity_cleaning_tank"
-                        android:layout_margin="@dimen/margin"></Spinner>
+                        android:layout_margin="@dimen/margin" />
 
                     <android.support.v7.widget.SwitchCompat
                         android:id="@+id/water_pure_proper"
@@ -109,9 +109,9 @@
                         android:text="@string/drink_water_area"/>
                     <ToggleButton
                         android:id="@+id/status_dw_area"
-                        android:layout_below="@+id/drinking_water_area"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/drinking_water_area"
                         android:textOff="@string/text_on"
                         android:textOn="@string/text_off"/>
 
@@ -119,13 +119,13 @@
                         android:id="@+id/no_of_taps"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/water_no_taps"
-                        android:layout_below="@id/status_dw_area"/>
+                        android:layout_below="@id/status_dw_area"
+                        android:text="@string/water_no_taps" />
 
                     <EditText
+                        android:id="@+id/broken_taps"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/broken_taps"
                         android:layout_below="@+id/no_of_taps"
                         android:hint="@string/water_broken_taps"
                         android:inputType="number"/>
@@ -141,8 +141,8 @@
                        android:id="@+id/clean_around_water_area_text"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="@string/cleanliness_around_drink_area"
-                       android:layout_below="@+id/regular_flow_water"/>
+                       android:layout_below="@+id/regular_flow_water"
+                       android:text="@string/cleanliness_around_drink_area" />
 
                     <RatingBar
                         android:id="@+id/clean_around_water_area"
@@ -172,17 +172,17 @@
                         android:layout_below="@+id/drain_clogg"
                         android:text="@string/stinking_in_drink_area" />
                     <EditText
+                        android:id="@+id/no_of_dustbins"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/no_of_dustbins"
                         android:layout_below="@+id/stinking"
                         android:hint="@string/no_dustbin"
                         android:inputType="number"/>
 
                     <EditText
+                        android:id="@+id/water_comments"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:id="@+id/water_comments"
                           android:layout_below="@+id/no_of_dustbins"
                           android:hint="@string/comment"
                           android:inputType="textMultiLine"/>
@@ -215,9 +215,9 @@
                     android:text="@string/dishwash_text"/>
                 <ToggleButton
                     android:id="@+id/status_dish_area"
-                    android:layout_below="@+id/dishwasing_areaa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/dishwasing_areaa"
                     android:textOff="@string/text_on"
                     android:textOn="@string/text_off"/>
                 <TextView
@@ -275,16 +275,16 @@
                     android:layout_below="@+id/drainnage_clogging"
                     android:text="@string/stinking" />
                 <EditText
+                    android:id="@+id/no_of_dustbin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/no_of_dustbin"
                     android:layout_below="@+id/Stinking_dish_wash_area"
                     android:hint="@string/no_dustbin"
                     android:inputType="number"/>
                 <EditText
+                    android:id="@+id/dish_wash_comments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dish_wash_comments"
                     android:layout_below="@+id/no_of_dustbin"
                     android:hint="@string/comment"
                     android:inputType="textMultiLine"/>

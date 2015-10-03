@@ -13,6 +13,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:clickable="true"
+                android:longClickable="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/vol_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/scl_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vol_name" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/scl_name" />
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@id/date"
+                        android:layout_centerHorizontal="true" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
             <!--Sanitation Boys-->
             <android.support.v7.widget.CardView
                 android:id="@+id/card1"
@@ -73,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_basin_boys"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -99,7 +142,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_urinal_boys"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -127,19 +170,11 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_taps_boys" />
 
-                        <CheckBox
-                            android:id="@+id/same_buck_tumb_boys"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/no_buck_tumb_boys"
-                            android:enabled="false"
-                            android:text="@string/no_buck_tumb" />
-
                         <LinearLayout
                             android:id="@+id/butulayout_boys"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/same_buck_tumb_boys"
+                            android:layout_below="@id/no_buck_tumb_boys"
                             android:orientation="horizontal">
 
                             <TextView
@@ -174,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_washroom_boys"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -192,7 +227,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_flow_basin_boys"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -209,7 +244,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_flow_urinal_boys"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -227,7 +262,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_window_boys"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -250,7 +285,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_mirror_boys"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -259,7 +294,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_mirror_boys"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/drainage_clogging" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -267,7 +302,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/drainage_clogging_boys"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/stinking" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -275,7 +310,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/stinking_boys"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/stinking" />
 
                         <TextView
@@ -292,7 +327,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/no_dustbin_boys"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/latch_doors" />
 
                         <TextView
@@ -339,7 +374,7 @@
                             android:id="@+id/status_girls"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:textOff="@string/text_on"
                             android:textOn="@string/text_off" />
 
@@ -364,7 +399,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_basin_girls"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -390,7 +425,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_urinal_girls"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -418,19 +453,11 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_taps_girls" />
 
-                        <CheckBox
-                            android:id="@+id/same_buck_tumb_girls"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/no_buck_tumb_girls"
-                            android:enabled="false"
-                            android:text="@string/no_buck_tumb" />
-
                         <LinearLayout
                             android:id="@+id/butulayout_girls"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/same_buck_tumb_girls"
+                            android:layout_below="@id/no_buck_tumb_girls"
                             android:orientation="horizontal">
 
                             <TextView
@@ -465,7 +492,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_washroom_girls"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -483,7 +510,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_flow_basin_girls"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -500,7 +527,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_flow_urinal_girls"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -518,7 +545,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_window_girls"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -541,7 +568,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_mirror_girls"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -550,7 +577,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_mirror_girls"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/drainage_clogging" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -558,7 +585,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/drainage_clogging_girls"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/stinking" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -566,7 +593,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/drainage_clogging_girls"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/stinking" />
 
                         <TextView
@@ -583,7 +610,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/no_dustbin_girls"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/latch_doors" />
 
                         <TextView
@@ -633,7 +660,7 @@
                             android:id="@+id/status_wt_purifier"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:textOff="@string/text_on"
                             android:textOn="@string/text_off" />
 
@@ -643,15 +670,15 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/status_wt_purifier"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/reg_clean_tank" />
 
-                        <Spinner
+                        <TextView
                             android:id="@+id/how_often_clean"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/regularity_cleaning_tank"
-                            android:layout_margin="@dimen/margin"></Spinner>
+                            android:layout_margin="@dimen/margin" />
 
                         <android.support.v7.widget.SwitchCompat
                             android:id="@+id/water_pure_proper"
@@ -659,7 +686,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/how_often_clean"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/water_purifier" />
 
 
@@ -719,7 +746,7 @@
                             android:id="@+id/status_dw_area"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:textOff="@string/text_on"
                             android:textOn="@string/text_off" />
 
@@ -744,7 +771,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/broken_taps"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/water_reg_flow" />
 
                         <TextView
@@ -760,7 +787,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/clean_around_water_area_text"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -769,7 +796,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/clean_around_water_area"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/tap_leakage" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -777,7 +804,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tap_Leakage"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/drain_clogging" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -785,7 +812,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/drain_clogg"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/stinking_in_drink_area" />
 
                         <TextView
@@ -842,7 +869,7 @@
                             android:id="@+id/status_dish_area"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:textOff="@string/text_on"
                             android:textOn="@string/text_off" />
 
@@ -866,7 +893,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/no_taps_broken"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/regular_flow_water" />
 
                         <TextView
@@ -882,7 +909,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/clean_around_water_area_textt"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -891,7 +918,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/clean_around_dish_wash_areaa"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/tap_leakage_dishwash_area" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -899,7 +926,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/leakage_of_taps"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/drain_clogg_dish_wash_area" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -907,7 +934,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/drainnage_clogging"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/stinking" />
 
                         <TextView
@@ -962,7 +989,7 @@
                             android:id="@+id/status_shade"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:textOff="@string/text_on"
                             android:textOn="@string/text_off" />
 
@@ -974,7 +1001,6 @@
                             android:layout_below="@id/status_shade"
                             android:layout_marginLeft="5dp"
                             android:clickable="false"
-                            android:enabled="false"
                             android:text="@string/need_repair" />
 
                         <CheckBox
@@ -984,7 +1010,6 @@
                             android:layout_below="@id/need_repair"
                             android:layout_marginLeft="5dp"
                             android:clickable="false"
-                            android:enabled="false"
                             android:text="@string/isclean" />
 
                         <!--blackboard-->
@@ -993,7 +1018,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/clean"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/no_blackboard"
                             android:inputType="number" />
 
@@ -1002,7 +1027,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/no_blackboard"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/cond_blackboard" />
 
                         <RatingBar
@@ -1011,7 +1036,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_blackboard"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -1021,7 +1046,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_blackboard"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/no_dustbin"
                             android:inputType="number" />
 
@@ -1030,7 +1055,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/no_dustbin"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/cond_color" />
 
                         <RatingBar
@@ -1039,7 +1064,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/cond_color"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -1048,7 +1073,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_color"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/comments"
                             android:inputType="textMultiLine" />
                     </RelativeLayout>
@@ -1090,7 +1115,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -1099,7 +1124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_clean_midday"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/clean_campus" />
 
                         <RatingBar
@@ -1108,7 +1133,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/clean_campus"
                             android:layout_centerHorizontal="true"
-                            android:clickable="false"
+                            android:isIndicator="true"
                             android:numStars="5"
                             android:stepSize="@integer/size" />
 
@@ -1118,7 +1143,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/star_clean_campus"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/sound_system" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -1127,7 +1152,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/sound_system"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/kitchen_midday_meals" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -1136,7 +1161,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/kitchen_midday_meals"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/sports_kits" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -1145,7 +1170,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/sports_kits"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/book_stationery" />
 
                         <android.support.v7.widget.SwitchCompat
@@ -1154,7 +1179,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/books_stationery"
                             android:checked="true"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:text="@string/amenities_culutural" />
 
                         <TextView
@@ -1162,7 +1187,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/amenities_cultural"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/other_comments"
                             android:inputType="textMultiLine" />
                     </RelativeLayout>
@@ -1189,7 +1214,6 @@
                         android:id="@+id/label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
                         android:text="Sweeper"
                         android:textSize="25sp" />
 
@@ -1204,7 +1228,7 @@
                             android:id="@+id/boys"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/boys"
                             android:inputType="number" />
 
@@ -1213,7 +1237,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/boys"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/girls"
                             android:inputType="number" />
 
@@ -1223,7 +1247,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/girls"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/corridor"
                             android:inputType="number" />
 
@@ -1232,7 +1256,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/corridor"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/campus"
                             android:inputType="number" />
 
@@ -1242,7 +1266,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/campus"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/water"
                             android:inputType="number" />
 
@@ -1251,7 +1275,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/water"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/dishwash"
                             android:inputType="number" />
 
@@ -1261,7 +1285,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/dishwash"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/classroom"
                             android:inputType="number" />
 
@@ -1270,7 +1294,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/classroom"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/storageroom"
                             android:inputType="number" />
 
@@ -1279,7 +1303,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/storageroom"
-                            android:enabled="false"
+                            android:clickable="false"
                             android:hint="@string/emptydustbin"
                             android:inputType="number" />
                     </RelativeLayout>
