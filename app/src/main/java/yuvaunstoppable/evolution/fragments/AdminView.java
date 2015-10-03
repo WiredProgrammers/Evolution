@@ -81,17 +81,11 @@ public class AdminView extends Fragment {
     String date, scl_name;
     List<School> list = new ArrayList<>();
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        setUpMapIfNeeded();
-    }
-
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            mMap = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map))
+            mMap = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map))
                     .getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
@@ -439,6 +433,7 @@ public class AdminView extends Fragment {
                 }
                 is.close();
                 response = sb.toString();
+                Log.d("res", response);
             } catch (Exception e) {
                 Log.e("Buffer Error", "Error: " + e.toString());
             }
@@ -446,6 +441,19 @@ public class AdminView extends Fragment {
                 JSONArray jsonObj = new JSONArray(response);
                 if (jsonObj != null) {
 
+
+                    JSONObject json0 = (JSONObject) jsonObj.get(0); //campus Renovation and 3 commons
+                    values.put("need_repair", json0.getString("need_repair"));
+                    values.put("clean", json0.getString("clean"));
+                    values.put("board", json0.getString("board"));
+                    values.put("dustbin", json0.getString("dustbin"));
+                    values.put("cond_board", json0.getString("cond_board"));
+                    values.put("color", json0.getString("color"));
+                    values.put("renovation_comments", json0.getString("comments"));
+                    values.put("status_shade", json0.getString("shade"));
+                    values.put("uname", json0.getString("uname"));
+                    values.put("date", json0.getString("date"));
+                    values.put("scl_id", json0.getString("scl_id"));
 
 
                     JSONObject json1 = (JSONObject) jsonObj.get(2); //location : 2
@@ -532,7 +540,7 @@ public class AdminView extends Fragment {
                     values.put("dustbins_dish",json8.getString("dustbin"));
                     values.put("comments_dish",json8.getString("comments"));
                     values.put("clean_dish",json8.getString("clean"));
-                    values.put("satus_dishwash",json8.getString("status"));
+                    values.put("staus_dishwash", json8.getString("status"));
 
 
                     JSONObject json9 = (JSONObject) jsonObj.get(4); //others
@@ -544,22 +552,8 @@ public class AdminView extends Fragment {
                     values.put("books_stationery", json9.getString("stationery"));
                     values.put("amenities_cultural", json9.getString("cultural"));
                     values.put("Comments", json9.getString("comments"));
-
-                    JSONObject json0 = (JSONObject) jsonObj.get(0); //campus Renovation and 3 commons
-                    values.put("need_repair",json0.getString("need_repair"));
-                    values.put("clean", json0.getString("clean"));
-                    values.put("board", json0.getString("board"));
-                    values.put("dustbin", json0.getString("dustbin"));
-                    values.put("cond_board", json0.getString("cond_board"));
-                    values.put("color", json0.getString("color"));
-                    values.put("renovation_comments", json0.getString("comments"));
-                    values.put("status_shade", json0.getString("shade"));
-                    values.put("uname", json0.getString("uname"));
-                    values.put("date", json0.getString("date"));
-                    values.put("scl_id",json0.getString("scl_id"));
-
                 }
-                Log.d("response",list.toString());
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -593,7 +587,7 @@ public class AdminView extends Fragment {
             roofBoys.setChecked(values.get("roof_boys").equalsIgnoreCase("yes"));
             stinkingBoys.setChecked(values.get("stinking_boys").equalsIgnoreCase("yes"));
             drainCloggingBoys.setChecked(values.get("clog_boys").equalsIgnoreCase("yes"));
-            status_boys.setChecked(values.get(status_boys).equalsIgnoreCase("yes"));
+            status_boys.setChecked(values.get("status_boys").equalsIgnoreCase("yes"));
 
             //girls
             /*
@@ -639,7 +633,7 @@ public class AdminView extends Fragment {
             statusWtPurifier.setChecked(values.get("staus_water").equalsIgnoreCase("yes"));
 
             //water area
-            StatusDwArea.setChecked(values.get("status_water_area").equalsIgnoreCase("yes"));
+            StatusDwArea.setChecked(values.get("staus_water_area").equalsIgnoreCase("yes"));
             regularFlowWaterArea.setChecked(values.get("reg_flow_water").equalsIgnoreCase("yes"));
             tapLeakageWaterArea.setChecked(values.get("tap_leakage_water").equalsIgnoreCase("yes"));
             drainCloggWaterArea.setChecked(values.get("drain_clog_water").equalsIgnoreCase("yes"));
@@ -652,14 +646,14 @@ public class AdminView extends Fragment {
 
 
             //campus renovation
-            needRepair.setChecked(values.get("need_repair").equalsIgnoreCase("yes"));
+            /*needRepair.setChecked(values.get("need_repair").equalsIgnoreCase("yes"));
             clean.setChecked(values.get("clean").equalsIgnoreCase("yes"));
             noBlackboard.setText(values.get("board"));
             noDustbin.setText(values.get("dustbin"));
             starBlackboard.setRating(Float.parseFloat(values.get("cond_board")));
             starColor.setRating(Float.parseFloat(values.get("color")));
             statusShade.setText(values.get("status_shade"));
-            comments.setText(values.get("comments"));
+            comments.setText(values.get("comments"));*/
 
             //dishwash
             regularFlowDishWashArea.setChecked(values.get("reg_flow_dish").equalsIgnoreCase("yes"));
@@ -682,11 +676,6 @@ public class AdminView extends Fragment {
             booksStationery.setChecked(values.get("books_stationery").equalsIgnoreCase("yes"));
             amenitiesCultural.setChecked(values.get("amenities_cultural").equalsIgnoreCase("yes"));
             otherComments.setText(values.get("Comments"));
-
-
-
-
-
 
         }
 
