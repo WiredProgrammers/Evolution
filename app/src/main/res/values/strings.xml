@@ -58,7 +58,7 @@
     <string name="reg_clean_tank">Regularity of Cleaning Water Tank</string>
     <string name="water_tank_purifier">Water Tank And Purifier</string>
     <string name="water_purifier">Is the water purifier working properly?</string>
-    <string name="filling_tank_freq">Frequency of filling the tank</string>
+    <string name="filling_tank_freq">Frequency of filling the tank per day</string>
     <string name="filling_tank_freq_ans">no. of times in a day</string>
     <string name="water_tank_capacity">Capacity of Water Tank</string>
     <string name="water_tank_capacity_ans">Capacity in Litre</string>

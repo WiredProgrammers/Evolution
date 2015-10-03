@@ -529,7 +529,7 @@ public class AdminView extends Fragment {
             noTumbBoys = (TextView) layout.findViewById(R.id.present_tumbler_boys);
             noBuckBoys = (TextView) layout.findViewById(R.id.present_bucket_boys);
             */
-            commentsBoys.setText(values.get("comments_boys"));
+            commentsBoys.setText("Volunteer Comments:\n" + values.get("comments_boys"));
             starBasinBoys.setRating(Float.parseFloat(values.get("basin_boys")));
             starUrinalBoys.setRating(Float.parseFloat(values.get("urinal_boys")));
             starWashroomBoys.setRating(Float.parseFloat(values.get("washroom_boys")));
@@ -552,7 +552,7 @@ public class AdminView extends Fragment {
             noUrinalsGirls.setText(values.get("urinal_girls"));
             noMirrorGirls.setText(values.get("mirror_girls"));
             */
-            starTapsGirls.setText(values.get("taps_girls"));
+            starTapsGirls.setText("No of Working Taps: " + values.get("taps_girls"));
             starBasinGirls.setRating(Float.parseFloat(values.get("basin_girls")));
             starUrinalGirls.setRating(Float.parseFloat(values.get("urinal_girls")));
             starWashroomGirls.setRating(Float.parseFloat(values.get("washroom_girls")));
@@ -564,26 +564,26 @@ public class AdminView extends Fragment {
             roofGirls.setChecked(values.get("roof_girls").equalsIgnoreCase("yes"));
             stinkingGirls.setChecked(values.get("stinking_girls").equalsIgnoreCase("yes"));
             drainCloggingGirls.setChecked(values.get("clog_girls").equalsIgnoreCase("yes"));
-            commentsGirls.setText(values.get("comments_girls"));
+            commentsGirls.setText("Volunteer comments:\n" + values.get("comments_girls"));
             status_girls.setChecked(values.get("status_girls").equalsIgnoreCase("yes"));
 
             //sweeper
-            dishwash.setText(values.get("dishwash"));
-            boys.setText(values.get("boys"));
-            girls.setText(values.get("girls"));
-            corridor.setText(values.get("corridor"));
-            campus.setText(values.get("campus"));
-            water.setText(values.get("water"));
-            classroom.setText(values.get("class"));
-            storageroom.setText(values.get("storage"));
-            dustbin.setText(values.get("dustbin"));
+            dishwash.setText("Dishwash " + values.get("dishwash") + " times");
+            boys.setText("Boys Washroom " + values.get("boys") + " times");
+            girls.setText("Girls Washroom " + values.get("girls") + " times");
+            corridor.setText("Corridor " + values.get("corridor") + " times");
+            campus.setText("Campus " + values.get("campus") + " times");
+            water.setText("Drinking water area " + values.get("water") + " times");
+            classroom.setText("Classrooms " + values.get("class") + " times");
+            storageroom.setText("Storage room " + values.get("storage") + " times");
+            dustbin.setText("Empties the dustbins " + values.get("dustbin") + " times");
 
             //water tank
             regularTankCleanWater.setChecked(values.get("reg_clean").equalsIgnoreCase("yes"));
             purifierProperWater.setChecked(values.get("purifier_proper").equalsIgnoreCase("yes"));
-            fillingFrequencyWater.setText(values.get("freq_fill"));
-            capacityWater.setText(values.get("capacity_tank"));
-            how_often_clean.setText(values.get("f_clean_month"));
+            fillingFrequencyWater.setText("Frequency of filling is " + values.get("freq_fill") + "/day");
+            capacityWater.setText("Capacity of tank is " + values.get("capacity_tank") + " litres");
+            how_often_clean.setText("Tank is cleaned every " + values.get("f_clean_month") + "month(s)");
             statusWtPurifier.setChecked(values.get("staus_water").equalsIgnoreCase("yes"));
 
 
