@@ -25,18 +25,25 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/vol_name"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/vol_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vol_name">
 
                     <TextView
                         android:id="@+id/scl_name"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/vol_name" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/date"
@@ -52,7 +59,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_below="@id/date"
                         android:layout_centerHorizontal="true" />
-
+                    </RelativeLayout>
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -160,8 +167,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/no_taps_boys"
-                            android:hint="@string/cond_taps"
-                            android:inputType="number" />
+                            android:text="@string/cond_taps" />
 
                         <!--Buckets and Tumblers-->
                         <TextView
@@ -182,16 +188,14 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
-                                android:hint="@string/present_bucket"
-                                android:inputType="number" />
+                                android:text="@string/present_bucket" />
 
                             <TextView
                                 android:id="@+id/present_tumbler_boys"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
-                                android:hint="@string/present_tumbler"
-                                android:inputType="number" />
+                                android:text="@string/present_tumbler" />
 
 
                         </LinearLayout>
@@ -318,8 +322,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/roof_boys"
-                            android:hint="@string/no_dustbin"
-                            android:inputType="number" />
+                            android:text="@string/no_dustbin" />
 
                         <android.support.v7.widget.SwitchCompat
                             android:id="@+id/latch_doors_boys"
@@ -335,8 +338,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/latch_doors_boys"
-                            android:hint="@string/comments"
-                            android:inputType="textMultiLine" />
+                            android:text="@string/comments" />
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -443,8 +445,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/no_taps_girls"
-                            android:hint="@string/cond_taps"
-                            android:inputType="number" />
+                            android:text="@string/cond_taps" />
 
                         <!--Buckets and Tumblers-->
                         <TextView
@@ -465,16 +466,14 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
-                                android:hint="@string/present_bucket"
-                                android:inputType="number" />
+                                android:text="@string/present_bucket" />
 
                             <TextView
                                 android:id="@+id/present_tumbler_girls"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
-                                android:hint="@string/present_tumbler"
-                                android:inputType="number" />
+                                android:text="@string/present_tumbler" />
 
 
                         </LinearLayout>
@@ -601,8 +600,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/roof_girls"
-                            android:hint="@string/no_dustbin"
-                            android:inputType="number" />
+                            android:text="@string/no_dustbin" />
 
                         <android.support.v7.widget.SwitchCompat
                             android:id="@+id/latch_doors_girls"
@@ -618,8 +616,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/latch_doors_girls"
-                            android:hint="@string/comments"
-                            android:inputType="textMultiLine" />
+                            android:text="@string/comments" />
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -631,7 +628,7 @@
                 android:id="@+id/card3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin"
                 android:clickable="true"
                 android:longClickable="true"
                 app:cardUseCompatPadding="true">
@@ -695,8 +692,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/water_pure_proper"
-                            android:hint="@string/filling_tank_freq"
-                            android:inputType="number" />
+                            android:text="@string/filling_tank_freq" />
 
 
                         <TextView
@@ -704,8 +700,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/fill_tank_freq_ans"
-                            android:hint="@string/water_tank_capacity"
-                            android:inputType="number" />
+                            android:text="@string/water_tank_capacity" />
 
                     </RelativeLayout>
                 </RelativeLayout>
@@ -718,7 +713,7 @@
                 android:id="@+id/card4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin"
                 android:clickable="true"
                 android:longClickable="true"
                 app:cardUseCompatPadding="true">
@@ -762,8 +757,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/no_of_taps"
-                            android:hint="@string/water_broken_taps"
-                            android:inputType="number" />
+                            android:text="@string/water_broken_taps" />
 
                         <android.support.v7.widget.SwitchCompat
                             android:id="@+id/regular_flow_water"
@@ -820,16 +814,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/stinking"
-                            android:hint="@string/no_dustbin"
-                            android:inputType="number" />
+                            android:text="@string/no_dustbin" />
 
                         <TextView
                             android:id="@+id/water_comments"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/no_of_dustbins"
-                            android:hint="@string/comment"
-                            android:inputType="textMultiLine" />
+                            android:text="@string/comment" />
 
                     </RelativeLayout>
                 </RelativeLayout>
@@ -841,7 +833,7 @@
                 android:id="@+id/card5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin"
                 android:clickable="true"
                 android:longClickable="true"
                 app:cardUseCompatPadding="true">
@@ -942,16 +934,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/Stinking_dish_wash_area"
-                            android:hint="@string/no_dustbin"
-                            android:inputType="number" />
+                            android:text="@string/no_dustbin" />
 
                         <TextView
                             android:id="@+id/dish_wash_comments"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/no_of_dustbin"
-                            android:hint="@string/comment"
-                            android:inputType="textMultiLine" />
+                            android:text="@string/comment" />
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -961,7 +951,7 @@
                 android:id="@+id/card6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin"
                 android:clickable="true"
                 android:longClickable="true"
                 app:cardUseCompatPadding="true">
@@ -1019,8 +1009,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/clean"
                             android:clickable="false"
-                            android:hint="@string/no_blackboard"
-                            android:inputType="number" />
+                            android:text="@string/no_blackboard" />
 
                         <TextView
                             android:id="@+id/cond_blackboard"
@@ -1047,8 +1036,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_blackboard"
                             android:clickable="false"
-                            android:hint="@string/no_dustbin"
-                            android:inputType="number" />
+                            android:text="@string/no_dustbin" />
 
                         <TextView
                             android:id="@+id/cond_color"
@@ -1074,8 +1062,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/star_color"
                             android:clickable="false"
-                            android:hint="@string/comments"
-                            android:inputType="textMultiLine" />
+                            android:text="@string/comments" />
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -1083,9 +1070,8 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/card7"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
                 android:clickable="true"
                 android:longClickable="true"
                 app:cardUseCompatPadding="true">
@@ -1188,8 +1174,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/amenities_cultural"
                             android:clickable="false"
-                            android:hint="@string/other_comments"
-                            android:inputType="textMultiLine" />
+                            android:text="@string/other_comments" />
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -1199,7 +1184,7 @@
                 android:id="@+id/card8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin"
                 android:clickable="true"
                 android:longClickable="true"
                 app:cardUseCompatPadding="true">
@@ -1229,8 +1214,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:clickable="false"
-                            android:hint="@string/boys"
-                            android:inputType="number" />
+                            android:text="@string/boys" />
 
                         <TextView
                             android:id="@+id/girls"
@@ -1238,8 +1222,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/boys"
                             android:clickable="false"
-                            android:hint="@string/girls"
-                            android:inputType="number" />
+                            android:text="@string/girls" />
 
 
                         <TextView
@@ -1248,8 +1231,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/girls"
                             android:clickable="false"
-                            android:hint="@string/corridor"
-                            android:inputType="number" />
+                            android:text="@string/corridor" />
 
                         <TextView
                             android:id="@+id/campus"
@@ -1257,8 +1239,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/corridor"
                             android:clickable="false"
-                            android:hint="@string/campus"
-                            android:inputType="number" />
+                            android:text="@string/campus" />
 
 
                         <TextView
@@ -1267,8 +1248,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/campus"
                             android:clickable="false"
-                            android:hint="@string/water"
-                            android:inputType="number" />
+                            android:text="@string/water" />
 
                         <TextView
                             android:id="@+id/dishwash"
@@ -1276,8 +1256,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/water"
                             android:clickable="false"
-                            android:hint="@string/dishwash"
-                            android:inputType="number" />
+                            android:text="@string/dishwash" />
 
 
                         <TextView
@@ -1286,8 +1265,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/dishwash"
                             android:clickable="false"
-                            android:hint="@string/classroom"
-                            android:inputType="number" />
+                            android:text="@string/classroom" />
 
                         <TextView
                             android:id="@+id/storageroom"
@@ -1295,8 +1273,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/classroom"
                             android:clickable="false"
-                            android:hint="@string/storageroom"
-                            android:inputType="number" />
+                            android:text="@string/storageroom" />
 
                         <TextView
                             android:id="@+id/emptydustbin"
@@ -1304,8 +1281,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/storageroom"
                             android:clickable="false"
-                            android:hint="@string/emptydustbin"
-                            android:inputType="number" />
+                            android:text="@string/emptydustbin" />
                     </RelativeLayout>
                 </RelativeLayout>
             </android.support.v7.widget.CardView>

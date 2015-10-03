@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.SwitchCompat;
+import android.test.UiThreadTest;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -75,10 +75,14 @@ public class AdminView extends Fragment {
     static TextView noBlackboard,noDustbin,comments;
     static RatingBar starBlackboard,starColor;
     static ToggleButton statusShade;
+
+    static TextView volName, sclName, Date;
+
     GoogleMap mMap;
     HashMap<String, String> values = new HashMap<>();
     int scl_id;
-    String date, scl_name;
+    String date;
+    String scl_name;
     List<School> list = new ArrayList<>();
 
     private void setUpMapIfNeeded() {
@@ -117,7 +121,11 @@ public class AdminView extends Fragment {
         date = bundle.getString("date");
         scl_name = bundle.getString("scl_name");
         new Fetch().execute((Void) null);
-
+        volName = (TextView) layout.findViewById(R.id.vol_name);
+        sclName = (TextView) layout.findViewById(R.id.scl_name);
+        sclName.setText("School : " + scl_name);
+        Date = (TextView) layout.findViewById(R.id.date);
+        Date.setText("Date : " + date);
         final View boysView = layout.findViewById(R.id.boys_view);
         final View girlsView = layout.findViewById(R.id.girls_view);
         final View waterView = layout.findViewById(R.id.water_view);
@@ -126,6 +134,27 @@ public class AdminView extends Fragment {
         final View shadeView = layout.findViewById(R.id.shade_view);
         final View otherView = layout.findViewById(R.id.other_view);
         final View sweeperView = layout.findViewById(R.id.sweeper_view);
+        final View volView = layout.findViewById(R.id.vol_view);
+
+        View card9 = layout.findViewById(R.id.card9);
+        card9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (volView.getVisibility() == View.GONE) {
+                    boysView.setVisibility(View.GONE);
+                    girlsView.setVisibility(View.GONE);
+                    waterView.setVisibility(View.GONE);
+                    drinkingView.setVisibility(View.GONE);
+                    dishwashView.setVisibility(View.GONE);
+                    shadeView.setVisibility(View.GONE);
+                    otherView.setVisibility(View.GONE);
+                    sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.VISIBLE);
+                } else {
+//                    boysView.setVisibility(View.GONE);
+                }
+            }
+        });
         View card1 = layout.findViewById(R.id.card1);
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,8 +168,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.GONE);
                     otherView.setVisibility(View.GONE);
                     sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    boysView.setVisibility(View.GONE);
+//                    boysView.setVisibility(View.GONE);
                 }
             }
         });
@@ -157,8 +187,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.GONE);
                     otherView.setVisibility(View.GONE);
                     sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    girlsView.setVisibility(View.GONE);
+//                    girlsView.setVisibility(View.GONE);
                 }
             }
         });
@@ -175,8 +206,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.GONE);
                     otherView.setVisibility(View.GONE);
                     sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    waterView.setVisibility(View.GONE);
+//                    waterView.setVisibility(View.GONE);
                 }
             }
         });
@@ -193,8 +225,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.GONE);
                     otherView.setVisibility(View.GONE);
                     sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    drinkingView.setVisibility(View.GONE);
+//                    drinkingView.setVisibility(View.GONE);
                 }
             }
         });
@@ -211,8 +244,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.GONE);
                     otherView.setVisibility(View.GONE);
                     sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    dishwashView.setVisibility(View.GONE);
+//                    dishwashView.setVisibility(View.GONE);
                 }
             }
         });
@@ -229,8 +263,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.VISIBLE);
                     otherView.setVisibility(View.GONE);
                     sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    shadeView.setVisibility(View.GONE);
+//                    shadeView.setVisibility(View.GONE);
                 }
             }
         });
@@ -247,8 +282,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.GONE);
                     otherView.setVisibility(View.VISIBLE);
                     sweeperView.setVisibility(View.GONE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    otherView.setVisibility(View.GONE);
+//                    otherView.setVisibility(View.GONE);
                 }
             }
         });
@@ -265,8 +301,9 @@ public class AdminView extends Fragment {
                     shadeView.setVisibility(View.GONE);
                     otherView.setVisibility(View.GONE);
                     sweeperView.setVisibility(View.VISIBLE);
+                    volView.setVisibility(View.GONE);
                 } else {
-                    sweeperView.setVisibility(View.GONE);
+//                    sweeperView.setVisibility(View.GONE);
                 }
             }
         });
@@ -382,8 +419,6 @@ public class AdminView extends Fragment {
         amenitiesCultural = (SwitchCompat) layout.findViewById(R.id.amenities_cultural);
         otherComments = (TextView) layout.findViewById(R.id.other_comments);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner2_item, types);
-        Log.d("Adapter", String.valueOf(adapter.isEmpty()));
         how_often_clean = (TextView) layout.findViewById(R.id.how_often_clean);
         return layout;
 
@@ -543,7 +578,7 @@ public class AdminView extends Fragment {
                     values.put("staus_dishwash", json8.getString("status"));
 
 
-                    JSONObject json9 = (JSONObject) jsonObj.get(4); //others
+                    JSONObject json9 = (JSONObject) jsonObj.get(3); //others
                     values.put("clean_midday", json9.getString("clean_midday"));
                     values.put("clean_campus", json9.getString("clean_campus"));
                     values.put("sound_system", json9.getString("soundsys"));
@@ -551,7 +586,7 @@ public class AdminView extends Fragment {
                     values.put("sports_kits", json9.getString("sports"));
                     values.put("books_stationery", json9.getString("stationery"));
                     values.put("amenities_cultural", json9.getString("cultural"));
-                    values.put("Comments", json9.getString("comments"));
+                    values.put("comments", json9.getString("comments"));
                 }
 
 
@@ -559,26 +594,35 @@ public class AdminView extends Fragment {
                 e.printStackTrace();
             }
 
-            setText();
-            setUpMap(Double.parseDouble(values.get("lat")), Double.parseDouble(values.get("lon")));
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    setText();
+                    setUpMapIfNeeded();
+                }
+            });
+
 
             return null;
         }
+
+
+        @UiThreadTest
         protected void setText(){
 
             //boys
+
+            noTumbBoys.setText("No of tumbler : " + values.get("tumb_boys"));
+            noBuckBoys.setText("No of buckets : " + values.get("buck_boys"));
               /*
             noUrinalsBoys = (TextView) layout.findViewById(R.id.no_urinals_boys);
             noTapsBoys = (TextView) layout.findViewById(R.id.no_taps_boys);
             noMirrorBoys = (TextView) layout.findViewById(R.id.no_mirror_boys);
-            noTumbBoys = (TextView) layout.findViewById(R.id.present_tumbler_boys);
-            noBuckBoys = (TextView) layout.findViewById(R.id.present_bucket_boys);
             */
             commentsBoys.setText("Volunteer Comments:\n" + values.get("comments_boys"));
             starBasinBoys.setRating(Float.parseFloat(values.get("basin_boys")));
             starUrinalBoys.setRating(Float.parseFloat(values.get("urinal_boys")));
             starWashroomBoys.setRating(Float.parseFloat(values.get("washroom_boys")));
-            starTapsBoys.setText(values.get("taps_boys"));
+            starTapsBoys.setText("No. of working taps : " + values.get("taps_boys"));
             starFlowBasinBoys.setRating(Float.parseFloat(values.get("flow_basin_boys")));
             starFlowUrinalBoys.setRating(Float.parseFloat(values.get("flow_urinal_boys")));
             starWindowBoys.setRating(Float.parseFloat(values.get("window_boys")));
@@ -590,9 +634,10 @@ public class AdminView extends Fragment {
             status_boys.setChecked(values.get("status_boys").equalsIgnoreCase("yes"));
 
             //girls
+
+            noTumbGirls.setText("No of tumbler : " + values.get("tumb_girls"));
+            noBuckGirls.setText("No of buckets : " + values.get("buck_girls"));
             /*
-            noTumbGirls = (TextView) layout.findViewById(R.id.present_tumbler_girls);
-            noBuckGirls = (TextView) layout.findViewById(R.id.present_bucket_girls);
             noTapsGirls.setText(values.get("taps_girls"));
             noBasinGirls.setText(values.get("basin_girls"));
             noUrinalsGirls.setText(values.get("urinal_girls"));
@@ -638,29 +683,29 @@ public class AdminView extends Fragment {
             tapLeakageWaterArea.setChecked(values.get("tap_leakage_water").equalsIgnoreCase("yes"));
             drainCloggWaterArea.setChecked(values.get("drain_clog_water").equalsIgnoreCase("yes"));
             isStinkingWaterArea.setChecked(values.get("stinking_water_area").equalsIgnoreCase("yes"));
-            brokenTapsWaterArea.setText("No. of broken taps " + values.get("broken_taps_water"));
-            //noOfDustBinsWaterArea = (TextView) layout.findViewById(R.id.no_of_dustbins);
+            brokenTapsWaterArea.setText("No. of broken taps : " + values.get("broken_taps_water"));
+            noOfDustBinsWaterArea.setText("No. of dustbins : " + values.get("dustbins_water"));
             commentsWaterArea.setText(values.get("comments_water"));
             cleanAroundWaterArea.setRating(Float.parseFloat(values.get("clean_water")));
             //noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_of_taps);
 
 
             //campus renovation
-            /*needRepair.setChecked(values.get("need_repair").equalsIgnoreCase("yes"));
+            needRepair.setChecked(values.get("need_repair").equalsIgnoreCase("yes"));
             clean.setChecked(values.get("clean").equalsIgnoreCase("yes"));
             noBlackboard.setText(values.get("board"));
             noDustbin.setText(values.get("dustbin"));
             starBlackboard.setRating(Float.parseFloat(values.get("cond_board")));
             starColor.setRating(Float.parseFloat(values.get("color")));
             statusShade.setText(values.get("status_shade"));
-            comments.setText(values.get("comments"));*/
+            comments.setText(values.get("comments"));
 
             //dishwash
             regularFlowDishWashArea.setChecked(values.get("reg_flow_dish").equalsIgnoreCase("yes"));
             tapLeakageDishWashArea.setChecked(values.get("tap_leakage_dish").equalsIgnoreCase("yes"));
             drainCloggDishWashArea.setChecked(values.get("drain_clog_dish").equalsIgnoreCase("yes"));
             isStinkingDishWashArea.setChecked(values.get("stinking_dish").equalsIgnoreCase("yes"));
-          //  noOfDustBinsDishWashArea = (TextView) layout.findViewById(R.id.no_of_dustbin);
+            noOfDustBinsDishWashArea.setText("No. of dustbins : " + values.get("dustbins_dish"));
             statusDishArea.setChecked(values.get("staus_dishwash").equalsIgnoreCase("yes"));
            // noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
             commentsDishWashArea.setText("Volunteer Comments:\n" + values.get("comments_dish"));
@@ -675,8 +720,9 @@ public class AdminView extends Fragment {
             sportsKits.setChecked(values.get("sports_kits").equalsIgnoreCase("yes"));
             booksStationery.setChecked(values.get("books_stationery").equalsIgnoreCase("yes"));
             amenitiesCultural.setChecked(values.get("amenities_cultural").equalsIgnoreCase("yes"));
-            otherComments.setText(values.get("Comments"));
+            otherComments.setText(values.get("comments"));
 
+            volName.setText("Volunteer : " + values.get("uname"));
         }
 
         @Override

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +28,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import yuvaunstoppable.evolution.db.DBHelper;
 
 /**
  * Created by Yash on 30-Jun-15.
@@ -71,13 +75,50 @@ public class VolunteerSchool extends AppCompatActivity {
         });
     }
 
+    private void populateSpinner() {
+        List<String> lables = new ArrayList<String>();
+
+        for (int i = 0; i < list.size(); i++) {
+            lables.add(list.get(i).getScl_name());
+        }
+        Log.d("string", lables.toString());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner3_item, lables);
+        scl_id.setPrompt("Select School");
+        scl_id.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, this));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.logout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            DBHelper dbHelper = DBHelper.getInstance(this);
+            dbHelper.logout();
+            startActivity(new Intent(VolunteerSchool.this, Main.class));
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     class Fetch extends AsyncTask<Void, Void, Void> {
         ProgressDialog progressDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog =  new ProgressDialog(VolunteerSchool.this);
+            progressDialog = new ProgressDialog(VolunteerSchool.this);
             progressDialog.setMessage("Fetching Schools");
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -122,10 +163,10 @@ public class VolunteerSchool extends AppCompatActivity {
                 if (jsonObj != null) {
                     for (int i = 0; i < jsonObj.length(); i++) {
                         JSONObject json = (JSONObject) jsonObj.get(i);
-                        list.add(new School(json.getString("name"),json.getInt("id")));
+                        list.add(new School(json.getString("name"), json.getInt("id")));
                     }
                 }
-                Log.d("response",list.toString());
+                Log.d("response", list.toString());
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -140,17 +181,5 @@ public class VolunteerSchool extends AppCompatActivity {
             populateSpinner();
             progressDialog.dismiss();
         }
-    }
-
-    private void populateSpinner() {
-        List<String> lables = new ArrayList<String>();
-
-        for (int i = 0; i < list.size(); i++) {
-            lables.add(list.get(i).getScl_name());
-        }
-        Log.d("string",lables.toString());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner3_item, lables);
-        scl_id.setPrompt("Select School");
-        scl_id.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner3_item, this));
     }
 }
