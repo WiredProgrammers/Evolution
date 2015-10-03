@@ -51,12 +51,12 @@ public class VolunteerOthers extends Fragment {
         try {
             values.add(new BasicNameValuePair("clean_midday", Integer.toString((int) starCleanMidDay.getRating())));
             values.add(new BasicNameValuePair("clean_campus", Integer.toString((int) starCleanCampus.getRating())));
-            values.add(new BasicNameValuePair("sound system", soundSystem.isChecked()? "Yes" : "No"));
-            values.add(new BasicNameValuePair("kitchen midday meals", kitchenMiddayMeals.isChecked()? "Yes" : "No"));
-            values.add(new BasicNameValuePair("sports kits", sportsKits.isChecked()? "Yes" : "No"));
-            values.add(new BasicNameValuePair("books stationery", booksStationery.isChecked()? "Yes" : "No"));
-            values.add(new BasicNameValuePair("amenities cultural", amenitiesCultural.isChecked()? "Yes" : "No"));
-            values.add(new BasicNameValuePair("Comments", otherComments.getText().toString()));
+            values.add(new BasicNameValuePair("sound_system", soundSystem.isChecked()? "Yes" : "No"));
+            values.add(new BasicNameValuePair("kitchen_midday_meals", kitchenMiddayMeals.isChecked()? "Yes" : "No"));
+            values.add(new BasicNameValuePair("sports_kits", sportsKits.isChecked()? "Yes" : "No"));
+            values.add(new BasicNameValuePair("books_stationery", booksStationery.isChecked()? "Yes" : "No"));
+            values.add(new BasicNameValuePair("amenities_cultural", amenitiesCultural.isChecked()? "Yes" : "No"));
+            values.add(new BasicNameValuePair("comments", otherComments.getText().toString()));
 
         }catch(Exception e){}
         return values;

@@ -84,7 +84,7 @@ public class VolunteerWater extends Fragment {
             values.add(new BasicNameValuePair("purifier_proper", purifierProperWater.isChecked() ? "yes" : "no"));
             values.add(new BasicNameValuePair("freq_fil", fillingFrequencyWater.getText().toString()));
             values.add(new BasicNameValuePair("capacity_tank", capacityWater.getText().toString()));
-            values.add(new BasicNameValuePair("f_clean_month", types[how_often_clean.getSelectedItemPosition() - 1]));
+            values.add(new BasicNameValuePair("f_clean_month", types[how_often_clean.getSelectedItemPosition() - 1].toString()));
 
             values.add(new BasicNameValuePair("reg_flow_water",regularFlowWaterArea.isChecked() ? "yes":"no"));
             values.add(new BasicNameValuePair("tap_leakage_water",tapLeakageWaterArea.isChecked() ? "yes":"no"));
