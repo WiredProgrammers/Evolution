@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.RatingBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -35,7 +34,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import yuvaunstoppable.evolution.NothingSelectedSpinnerAdapter;
 import yuvaunstoppable.evolution.R;
 import yuvaunstoppable.evolution.School;
 
@@ -56,7 +54,7 @@ public class AdminView extends Fragment {
     static TextView fillingFrequencyWater, capacityWater, brokenTapsWaterArea, noOfDustBinsWaterArea, commentsWaterArea, commentsDishWashArea, noOfDustBinsDishWashArea;
     static TextView noOfTapsWaterArea, noOfTapsDishWashArea;
     static RatingBar cleanAroundWaterArea, cleanAroundDishWashArea;
-    static Spinner how_often_clean;
+    static TextView how_often_clean;
     static ToggleButton statusWtPurifier, statusDishArea, StatusDwArea;
     static String[] types = {"1 month", "2 months", "3 months", "6 months", "12 months"};
     static TextView noBasinBoys, noUrinalsBoys, noTapsBoys, noMirrorBoys;
@@ -71,7 +69,7 @@ public class AdminView extends Fragment {
     static ToggleButton statusShade;
     HashMap<String, String> values = new HashMap<>();
     int scl_id;
-    String date;
+    String date, scl_name;
     List<School> list = new ArrayList<>();
 
     @Nullable
@@ -81,6 +79,7 @@ public class AdminView extends Fragment {
         Bundle bundle = this.getArguments();
         scl_id = bundle.getInt("scl_id");
         date = bundle.getString("date");
+        scl_name = bundle.getString("scl_name");
         new Fetch().execute((Void) null);
 
         final View boysView = layout.findViewById(R.id.boys_view);
@@ -335,12 +334,7 @@ public class AdminView extends Fragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner2_item, types);
         Log.d("Adapter", String.valueOf(adapter.isEmpty()));
-        how_often_clean = (Spinner) layout.findViewById(R.id.how_often_clean);
-        how_often_clean.setPrompt("Select no. of months");
-        how_often_clean.setAdapter(new NothingSelectedSpinnerAdapter(adapter, R.layout.spinner2_item, getActivity()));
-
-
-
+        how_often_clean = (TextView) layout.findViewById(R.id.how_often_clean);
         return layout;
 
     }
