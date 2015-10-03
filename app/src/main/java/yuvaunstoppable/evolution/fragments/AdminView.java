@@ -299,7 +299,7 @@ public class AdminView extends Fragment {
         purifierProperWater = (SwitchCompat) layout.findViewById(R.id.water_pure_proper);
         fillingFrequencyWater = (TextView) layout.findViewById(R.id.fill_tank_freq_ans);
         capacityWater = (TextView) layout.findViewById(R.id.water_tank_capacity_ans);
-        how_often_clean = (Spinner) layout.findViewById(R.id.how_often_clean);
+        how_often_clean = (TextView) layout.findViewById(R.id.how_often_clean);
         statusWtPurifier = (ToggleButton) layout.findViewById(R.id.status_wt_purifier);
 
 
