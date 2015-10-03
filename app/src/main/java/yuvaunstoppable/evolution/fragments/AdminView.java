@@ -257,6 +257,7 @@ public class AdminView extends Fragment {
         roofGirls = (SwitchCompat) layout.findViewById(R.id.roof_girls);
         stinkingGirls = (SwitchCompat) layout.findViewById(R.id.stinking_girls);
         drainCloggingGirls = (SwitchCompat) layout.findViewById(R.id.drainage_clogging_girls);
+        status_girls = (ToggleButton) layout.findViewById(R.id.status_girls);
 
         //boys
         noBasinBoys = (TextView) layout.findViewById(R.id.no_basin_boys);
@@ -281,7 +282,30 @@ public class AdminView extends Fragment {
         drainCloggingBoys = (SwitchCompat) layout.findViewById(R.id.drainage_clogging_boys);
         status_boys = (ToggleButton) layout.findViewById(R.id.status_boys);
 
-        status_girls = (ToggleButton) layout.findViewById(R.id.status_girls);
+        //sweeper
+        dishwash = (TextView) layout.findViewById(R.id.dishwash);
+        boys = (TextView) layout.findViewById(R.id.boys);
+        girls = (TextView) layout.findViewById(R.id.girls);
+        corridor = (TextView) layout.findViewById(R.id.corridor);
+        campus = (TextView) layout.findViewById(R.id.campus);
+        water = (TextView) layout.findViewById(R.id.water);
+        classroom = (TextView) layout.findViewById(R.id.classroom);
+        storageroom = (TextView) layout.findViewById(R.id.storageroom);
+        dustbin = (TextView) layout.findViewById(R.id.emptydustbin);
+
+
+        //water tank
+        regularTankCleanWater = (SwitchCompat) layout.findViewById(R.id.regularity_cleaning_tank);
+        purifierProperWater = (SwitchCompat) layout.findViewById(R.id.water_pure_proper);
+        fillingFrequencyWater = (TextView) layout.findViewById(R.id.fill_tank_freq_ans);
+        capacityWater = (TextView) layout.findViewById(R.id.water_tank_capacity_ans);
+        how_often_clean = (Spinner) layout.findViewById(R.id.how_often_clean);
+        statusWtPurifier = (ToggleButton) layout.findViewById(R.id.status_wt_purifier);
+
+
+
+
+
         needRepair = (CheckBox) layout.findViewById(R.id.need_repair);
         clean = (CheckBox) layout.findViewById(R.id.clean);
         noBlackboard = (TextView) layout.findViewById(R.id.no_blackboard);
@@ -298,17 +322,6 @@ public class AdminView extends Fragment {
         booksStationery = (SwitchCompat) layout.findViewById(R.id.books_stationery);
         amenitiesCultural = (SwitchCompat) layout.findViewById(R.id.amenities_cultural);
         otherComments = (TextView) layout.findViewById(R.id.other_comments);
-        boys = (TextView) layout.findViewById(R.id.boys);
-        girls = (TextView) layout.findViewById(R.id.girls);
-        corridor = (TextView) layout.findViewById(R.id.corridor);
-        campus = (TextView) layout.findViewById(R.id.campus);
-        water = (TextView) layout.findViewById(R.id.water);
-        dishwash = (TextView) layout.findViewById(R.id.dishwash);
-        classroom = (TextView) layout.findViewById(R.id.classroom);
-        storageroom = (TextView) layout.findViewById(R.id.storageroom);
-        dustbin = (TextView) layout.findViewById(R.id.emptydustbin);
-        regularTankCleanWater = (SwitchCompat) layout.findViewById(R.id.regularity_cleaning_tank);
-        purifierProperWater = (SwitchCompat) layout.findViewById(R.id.water_pure_proper);
         regularFlowWaterArea = (SwitchCompat) layout.findViewById(R.id.regular_flow_water);
         tapLeakageWaterArea = (SwitchCompat) layout.findViewById(R.id.tap_Leakage);
         drainCloggWaterArea = (SwitchCompat) layout.findViewById(R.id.drain_clogg);
@@ -321,14 +334,11 @@ public class AdminView extends Fragment {
         cleanAroundDishWashArea = (RatingBar) layout.findViewById(R.id.clean_around_dish_wash_areaa);
         noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_of_taps);
         noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
-        fillingFrequencyWater = (TextView) layout.findViewById(R.id.fill_tank_freq_ans);
-        capacityWater = (TextView) layout.findViewById(R.id.water_tank_capacity_ans);
         brokenTapsWaterArea = (TextView) layout.findViewById(R.id.broken_taps);
         noOfDustBinsWaterArea = (TextView) layout.findViewById(R.id.no_of_dustbins);
         commentsWaterArea = (TextView) layout.findViewById(R.id.water_comments);
         commentsDishWashArea = (TextView) layout.findViewById(R.id.dish_wash_comments);
         noOfDustBinsDishWashArea = (TextView) layout.findViewById(R.id.no_of_dustbin);
-        statusWtPurifier = (ToggleButton) layout.findViewById(R.id.status_wt_purifier);
         statusDishArea = (ToggleButton) layout.findViewById(R.id.status_dish_area);
         StatusDwArea = (ToggleButton) layout.findViewById(R.id.status_dw_area);
 
@@ -437,7 +447,6 @@ public class AdminView extends Fragment {
 
 
                     JSONObject json4 = (JSONObject) jsonObj.get(6); //sweeper : 6
-                    values.put("staus_water_area", json4.getString("status"));
                     values.put("boys", json4.getString("boys"));
                     values.put("girls", json4.getString("girls"));
                     values.put("corridor", json4.getString("corridor"));
@@ -446,6 +455,7 @@ public class AdminView extends Fragment {
                     values.put("class", json4.getString("class"));
                     values.put("storage", json4.getString("storage"));
                     values.put("dustbin", json4.getString("dustbin"));
+                    values.put("dishwash", json4.getString("dishwash"));
 
                     JSONObject json5 = (JSONObject) jsonObj.get(8); //water tank : 8
                     values.put("reg_clean", json5.getString("rglr_clean"));
@@ -457,6 +467,7 @@ public class AdminView extends Fragment {
 
 
                     JSONObject json7 = (JSONObject) jsonObj.get(7); //water area : 7
+                    values.put("staus_water_area", json7.getString("status"));
                     values.put("reg_flow_water",json7.getString("reg_flow"));
                     values.put("tap_leakage_water",json7.getString("tap_leakage"));
                     values.put("drain_clog_water",json7.getString("drain_clog"));
@@ -536,26 +547,47 @@ public class AdminView extends Fragment {
             /*
             noTumbGirls = (TextView) layout.findViewById(R.id.present_tumbler_girls);
             noBuckGirls = (TextView) layout.findViewById(R.id.present_bucket_girls);
-            commentsGirls = (TextView) layout.findViewById(R.id.comments_girls);
+            noTapsGirls.setText(values.get("taps_girls"));
+            noBasinGirls.setText(values.get("basin_girls"));
+            noUrinalsGirls.setText(values.get("urinal_girls"));
+            noMirrorGirls.setText(values.get("mirror_girls"));
             */
             starTapsGirls.setText(values.get("taps_girls"));
-           /* noBasinGirls = (TextView) layout.findViewById(R.id.no_basin_girls);
-            noUrinalsGirls = (TextView) layout.findViewById(R.id.no_urinals_girls);
-            noTapsGirls = (TextView) layout.findViewById(R.id.no_taps_girls);
-            noMirrorGirls = (TextView) layout.findViewById(R.id.no_mirror_girls);
-            starBasinGirls = (RatingBar) layout.findViewById(R.id.star_basin_girls);
-            starUrinalGirls = (RatingBar) layout.findViewById(R.id.star_urinal_girls);
-            starWashroomGirls = (RatingBar) layout.findViewById(R.id.star_washroom_girls);
-            starFlowBasinGirls = (RatingBar) layout.findViewById(R.id.star_flow_basin_girls);
-            starFlowUrinalGirls = (RatingBar) layout.findViewById(R.id.star_flow_urinal_girls);
-            starWindowGirls = (RatingBar) layout.findViewById(R.id.star_window_girls);
-            starMirrorGirls = (RatingBar) layout.findViewById(R.id.star_mirror_girls);
-            tumbBuckSameGirls = (CheckBox) layout.findViewById(R.id.same_buck_tumb_girls);
-            doorLatchGirls = (SwitchCompat) layout.findViewById(R.id.latch_doors_girls);
-            roofGirls = (SwitchCompat) layout.findViewById(R.id.roof_girls);
-            stinkingGirls = (SwitchCompat) layout.findViewById(R.id.stinking_girls);
-            drainCloggingGirls = (SwitchCompat) layout.findViewById(R.id.drainage_clogging_girls);
-*/
+            starBasinGirls.setRating(Float.parseFloat(values.get("basin_girls")));
+            starUrinalGirls.setRating(Float.parseFloat(values.get("urinal_girls")));
+            starWashroomGirls.setRating(Float.parseFloat(values.get("washroom_girls")));
+            starFlowBasinGirls.setRating(Float.parseFloat(values.get("flow_basin_girls")));
+            starFlowUrinalGirls.setRating(Float.parseFloat(values.get("flow_urinal_girls")));
+            starWindowGirls.setRating(Float.parseFloat(values.get("window_girls")));
+            starMirrorGirls.setRating(Float.parseFloat(values.get("mirror_girls")));
+            doorLatchGirls.setChecked(values.get("latch_girls").equalsIgnoreCase("yes"));
+            roofGirls.setChecked(values.get("roof_girls").equalsIgnoreCase("yes"));
+            stinkingGirls.setChecked(values.get("stinking_girls").equalsIgnoreCase("yes"));
+            drainCloggingGirls.setChecked(values.get("clog_girls").equalsIgnoreCase("yes"));
+            commentsGirls.setText(values.get("comments_girls"));
+            status_girls.setChecked(values.get("status_girls").equalsIgnoreCase("yes"));
+
+            //sweeper
+            dishwash.setText(values.get("dishwash"));
+            boys.setText(values.get("boys"));
+            girls.setText(values.get("girls"));
+            corridor.setText(values.get("corridor"));
+            campus.setText(values.get("campus"));
+            water.setText(values.get("water"));
+            classroom.setText(values.get("class"));
+            storageroom.setText(values.get("storage"));
+            dustbin.setText(values.get("dustbin"));
+
+            //water tank
+            regularTankCleanWater.setChecked(values.get("reg_clean").equalsIgnoreCase("yes"));
+            purifierProperWater.setChecked(values.get("purifier_proper").equalsIgnoreCase("yes"));
+            fillingFrequencyWater.setText(values.get("freq_fill"));
+            capacityWater.setText(values.get("capacity_tank"));
+            how_often_clean.setText(values.get("f_clean_month"));
+            statusWtPurifier.setChecked(values.get("staus_water").equalsIgnoreCase("yes"));
+
+
+
 
 
 
