@@ -303,7 +303,29 @@ public class AdminView extends Fragment {
         how_often_clean = (Spinner) layout.findViewById(R.id.how_often_clean);
         statusWtPurifier = (ToggleButton) layout.findViewById(R.id.status_wt_purifier);
 
+        //water area
+        StatusDwArea = (ToggleButton) layout.findViewById(R.id.status_dw_area);
+        regularFlowWaterArea = (SwitchCompat) layout.findViewById(R.id.regular_flow_water);
+        tapLeakageWaterArea = (SwitchCompat) layout.findViewById(R.id.tap_Leakage);
+        drainCloggWaterArea = (SwitchCompat) layout.findViewById(R.id.drain_clogg);
+        isStinkingWaterArea = (SwitchCompat) layout.findViewById(R.id.stinking);
+        brokenTapsWaterArea = (TextView) layout.findViewById(R.id.broken_taps);
+        noOfDustBinsWaterArea = (TextView) layout.findViewById(R.id.no_of_dustbins);
+        commentsWaterArea = (TextView) layout.findViewById(R.id.water_comments);
+        cleanAroundWaterArea = (RatingBar) layout.findViewById(R.id.clean_around_water_area);
+        noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_of_taps);
 
+        //dishwash
+        regularFlowDishWashArea = (SwitchCompat) layout.findViewById(R.id.reg_flow_water);
+        tapLeakageDishWashArea = (SwitchCompat) layout.findViewById(R.id.leakage_of_taps);
+        drainCloggDishWashArea = (SwitchCompat) layout.findViewById(R.id.drainnage_clogging);
+        isStinkingDishWashArea = (SwitchCompat) layout.findViewById(R.id.Stinking_dish_wash_area);
+        noOfDustBinsDishWashArea = (TextView) layout.findViewById(R.id.no_of_dustbin);
+        statusDishArea = (ToggleButton) layout.findViewById(R.id.status_dish_area);
+        noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
+        commentsDishWashArea = (TextView) layout.findViewById(R.id.dish_wash_comments);
+        cleanAroundDishWashArea = (RatingBar) layout.findViewById(R.id.clean_around_dish_wash_areaa);
+        comments = (TextView) layout.findViewById(R.id.comments);
 
 
 
@@ -311,7 +333,6 @@ public class AdminView extends Fragment {
         clean = (CheckBox) layout.findViewById(R.id.clean);
         noBlackboard = (TextView) layout.findViewById(R.id.no_blackboard);
         noDustbin = (TextView) layout.findViewById(R.id.no_dustbin);
-        comments = (TextView) layout.findViewById(R.id.comments);
         starBlackboard = (RatingBar) layout.findViewById(R.id.star_blackboard);
         starColor = (RatingBar) layout.findViewById(R.id.star_color);
         statusShade = (ToggleButton) layout.findViewById(R.id.status_shade);
@@ -323,25 +344,6 @@ public class AdminView extends Fragment {
         booksStationery = (SwitchCompat) layout.findViewById(R.id.books_stationery);
         amenitiesCultural = (SwitchCompat) layout.findViewById(R.id.amenities_cultural);
         otherComments = (TextView) layout.findViewById(R.id.other_comments);
-        regularFlowWaterArea = (SwitchCompat) layout.findViewById(R.id.regular_flow_water);
-        tapLeakageWaterArea = (SwitchCompat) layout.findViewById(R.id.tap_Leakage);
-        drainCloggWaterArea = (SwitchCompat) layout.findViewById(R.id.drain_clogg);
-        isStinkingWaterArea = (SwitchCompat) layout.findViewById(R.id.stinking);
-        regularFlowDishWashArea = (SwitchCompat) layout.findViewById(R.id.reg_flow_water);
-        tapLeakageDishWashArea = (SwitchCompat) layout.findViewById(R.id.leakage_of_taps);
-        drainCloggDishWashArea = (SwitchCompat) layout.findViewById(R.id.drainnage_clogging);
-        isStinkingDishWashArea = (SwitchCompat) layout.findViewById(R.id.Stinking_dish_wash_area);
-        cleanAroundWaterArea = (RatingBar) layout.findViewById(R.id.clean_around_water_area);
-        cleanAroundDishWashArea = (RatingBar) layout.findViewById(R.id.clean_around_dish_wash_areaa);
-        noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_of_taps);
-        noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
-        brokenTapsWaterArea = (TextView) layout.findViewById(R.id.broken_taps);
-        noOfDustBinsWaterArea = (TextView) layout.findViewById(R.id.no_of_dustbins);
-        commentsWaterArea = (TextView) layout.findViewById(R.id.water_comments);
-        commentsDishWashArea = (TextView) layout.findViewById(R.id.dish_wash_comments);
-        noOfDustBinsDishWashArea = (TextView) layout.findViewById(R.id.no_of_dustbin);
-        statusDishArea = (ToggleButton) layout.findViewById(R.id.status_dish_area);
-        StatusDwArea = (ToggleButton) layout.findViewById(R.id.status_dw_area);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner2_item, types);
         Log.d("Adapter", String.valueOf(adapter.isEmpty()));
@@ -539,6 +541,7 @@ public class AdminView extends Fragment {
             starBasinBoys.setRating(Float.parseFloat(values.get("basin_boys")));
             starUrinalBoys.setRating(Float.parseFloat(values.get("urinal_boys")));
             starWashroomBoys.setRating(Float.parseFloat(values.get("washroom_boys")));
+            starTapsBoys.setText(values.get("taps_boys"));
             starFlowBasinBoys.setRating(Float.parseFloat(values.get("flow_basin_boys")));
             starFlowUrinalBoys.setRating(Float.parseFloat(values.get("flow_urinal_boys")));
             starWindowBoys.setRating(Float.parseFloat(values.get("window_boys")));
@@ -592,6 +595,30 @@ public class AdminView extends Fragment {
             how_often_clean.setText(values.get("f_clean_month"));
             statusWtPurifier.setChecked(values.get("staus_water").equalsIgnoreCase("yes"));
 
+            //water area
+            StatusDwArea.setChecked(values.get("status_water_area").equalsIgnoreCase("yes"));
+            regularFlowWaterArea.setChecked(values.get("reg_flow_water").equalsIgnoreCase("yes"));
+            tapLeakageWaterArea.setChecked(values.get("tap_leakage_water").equalsIgnoreCase("yes"));
+            drainCloggWaterArea.setChecked(values.get("drain_clog_water").equalsIgnoreCase("yes"));
+            isStinkingWaterArea.setChecked(values.get("stinking_water_area").equalsIgnoreCase("yes"));
+            brokenTapsWaterArea.setText(values.get("broken_taps_water"));
+            //noOfDustBinsWaterArea = (TextView) layout.findViewById(R.id.no_of_dustbins);
+            commentsWaterArea.setText(values.get("comments_water"));
+            cleanAroundWaterArea.setRating(Float.parseFloat(values.get("clean_water")));
+            //noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_of_taps);
+
+
+            //dishwash
+            regularFlowDishWashArea.setChecked(values.get("reg_flow_dish").equalsIgnoreCase("yes"));
+            tapLeakageDishWashArea.setChecked(values.get("tap_leakage_dish").equalsIgnoreCase("yes"));
+            drainCloggDishWashArea.setChecked(values.get("drain_clog_dish").equalsIgnoreCase("yes"));
+            isStinkingDishWashArea.setChecked(values.get("stinking_dish").equalsIgnoreCase("yes"));
+          //  noOfDustBinsDishWashArea = (TextView) layout.findViewById(R.id.no_of_dustbin);
+            statusDishArea = (ToggleButton) layout.findViewById(R.id.status_dish_area);
+           // noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
+            commentsDishWashArea.setText(values.get("comments_dish"));
+            cleanAroundDishWashArea.setRating(Float.parseFloat(values.get("clean_dish")));
+            comments.setText(values.get("comments_dish"));
 
 
 
