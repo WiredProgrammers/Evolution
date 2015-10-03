@@ -489,16 +489,17 @@ public class AdminView extends Fragment {
                     values.put("dustbins_dish",json8.getString("dustbin"));
                     values.put("comments_dish",json8.getString("comments"));
                     values.put("clean_dish",json8.getString("clean"));
+                    values.put("satus_dishwash",json8.getString("status"));
 
 
                     JSONObject json9 = (JSONObject) jsonObj.get(4); //others
                     values.put("clean_midday", json9.getString("clean_midday"));
                     values.put("clean_campus", json9.getString("clean_campus"));
-                    values.put("sound system", json9.getString("soundsys"));
-                    values.put("kitchen midday meals", json9.getString("kitchen"));
-                    values.put("sports kits", json9.getString("sports"));
-                    values.put("books stationery", json9.getString("stationery"));
-                    values.put("amenities cultural", json9.getString("cultural"));
+                    values.put("sound_system", json9.getString("soundsys"));
+                    values.put("kitchen_midday_meals", json9.getString("kitchen"));
+                    values.put("sports_kits", json9.getString("sports"));
+                    values.put("books_stationery", json9.getString("stationery"));
+                    values.put("amenities_cultural", json9.getString("cultural"));
                     values.put("Comments", json9.getString("comments"));
 
                     JSONObject json0 = (JSONObject) jsonObj.get(0); //campus Renovation and 3 commons
@@ -620,10 +621,25 @@ public class AdminView extends Fragment {
             drainCloggDishWashArea.setChecked(values.get("drain_clog_dish").equalsIgnoreCase("yes"));
             isStinkingDishWashArea.setChecked(values.get("stinking_dish").equalsIgnoreCase("yes"));
           //  noOfDustBinsDishWashArea = (TextView) layout.findViewById(R.id.no_of_dustbin);
-            //statusDishArea = (ToggleButton) layout.findViewById(R.id.status_dish_area);
+            statusDishArea.setChecked(values.get("staus_dishwash").equalsIgnoreCase("yes"));
            // noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
             commentsDishWashArea.setText("Volunteer Comments:\n" + values.get("comments_dish"));
             cleanAroundDishWashArea.setRating(Float.parseFloat(values.get("clean_dish")));
+
+
+            //others
+            starCleanMidDay.setRating(Float.parseFloat(values.get("clean_midday")));
+            starCleanCampus.setRating(Float.parseFloat(values.get("clean_campus")));
+            soundSystem.setChecked(values.get("sound_system").equalsIgnoreCase("yes"));
+            kitchenMiddayMeals.setChecked(values.get("kitchen_midday_meals").equalsIgnoreCase("yes"));
+            sportsKits.setChecked(values.get("sports_kits").equalsIgnoreCase("yes"));
+            booksStationery.setChecked(values.get("books_stationery").equalsIgnoreCase("yes"));
+            amenitiesCultural.setChecked(values.get("amenities_cultural").equalsIgnoreCase("yes"));
+            otherComments.setText(values.get("Comments"));
+
+
+
+
 
 
         }
