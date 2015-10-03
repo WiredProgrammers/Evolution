@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +35,7 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import yuvaunstoppable.evolution.NothingSelectedSpinnerAdapter;
@@ -45,18 +46,18 @@ import yuvaunstoppable.evolution.School;
  * Created by Yash on 03-Jun-15.
  */
 public class AdminView extends Fragment {
-    ArrayList<NameValuePair> values = new ArrayList<NameValuePair>();
+    HashMap<String,String> values = new HashMap<>();
     static TextView noBasinGirls, noUrinalsGirls, noTapsGirls, noMirrorGirls;
     static RatingBar starBasinGirls, starUrinalGirls, starWashroomGirls, starFlowBasinGirls, starFlowUrinalGirls, starWindowGirls, starMirrorGirls;
-    static EditText starTapsGirls, noTumbGirls, noBuckGirls, commentsGirls;
+    static TextView starTapsGirls, noTumbGirls, noBuckGirls, commentsGirls;
     static CheckBox tumbBuckSameGirls;
     static SwitchCompat doorLatchGirls,drainCloggingGirls,stinkingGirls,roofGirls;
     static RatingBar starCleanMidDay,starCleanCampus;
     static SwitchCompat soundSystem, kitchenMiddayMeals, sportsKits, booksStationery, amenitiesCultural;
-    static EditText  otherComments;
-    static EditText boys,girls,corridor,campus,water,dishwash,classroom,storageroom,dustbin;
+    static TextView  otherComments;
+    static TextView boys,girls,corridor,campus,water,dishwash,classroom,storageroom,dustbin;
     static SwitchCompat regularTankCleanWater, purifierProperWater, regularFlowWaterArea, tapLeakageWaterArea, drainCloggWaterArea, isStinkingWaterArea, regularFlowDishWashArea, tapLeakageDishWashArea, drainCloggDishWashArea, isStinkingDishWashArea;
-    static EditText fillingFrequencyWater, capacityWater, brokenTapsWaterArea, noOfDustBinsWaterArea, commentsWaterArea, commentsDishWashArea, noOfDustBinsDishWashArea;
+    static TextView fillingFrequencyWater, capacityWater, brokenTapsWaterArea, noOfDustBinsWaterArea, commentsWaterArea, commentsDishWashArea, noOfDustBinsDishWashArea;
     static TextView noOfTapsWaterArea, noOfTapsDishWashArea;
     static RatingBar cleanAroundWaterArea, cleanAroundDishWashArea;
     static Spinner how_often_clean;
@@ -65,12 +66,12 @@ public class AdminView extends Fragment {
 
     static TextView noBasinBoys, noUrinalsBoys, noTapsBoys, noMirrorBoys;
     static RatingBar starBasinBoys, starUrinalBoys, starWashroomBoys, starFlowBasinBoys, starFlowUrinalBoys, starWindowBoys, starMirrorBoys;
-    static EditText starTapsBoys, noTumbBoys, noBuckBoys, commentsBoys;
+    static TextView starTapsBoys, noTumbBoys, noBuckBoys, commentsBoys;
     static CheckBox tumbBuckSameBoys;
     static SwitchCompat doorLatchBoys,drainCloggingBoys,stinkingBoys,roofBoys;
     static ToggleButton status_boys, status_girls;
     static CheckBox needRepair,clean;
-    static EditText noBlackboard,noDustbin,comments;
+    static TextView noBlackboard,noDustbin,comments;
     static RatingBar starBlackboard,starColor;
     static ToggleButton statusShade;
 
@@ -78,11 +79,12 @@ public class AdminView extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_adminview, container, false);
+
+        //girls
         noBasinGirls = (TextView) layout.findViewById(R.id.no_basin_girls);
         noUrinalsGirls = (TextView) layout.findViewById(R.id.no_urinals_girls);
         noTapsGirls = (TextView) layout.findViewById(R.id.no_taps_girls);
         noMirrorGirls = (TextView) layout.findViewById(R.id.no_mirror_girls);
-
         starBasinGirls = (RatingBar) layout.findViewById(R.id.star_basin_girls);
         starUrinalGirls = (RatingBar) layout.findViewById(R.id.star_urinal_girls);
         starWashroomGirls = (RatingBar) layout.findViewById(R.id.star_washroom_girls);
@@ -90,21 +92,21 @@ public class AdminView extends Fragment {
         starFlowUrinalGirls = (RatingBar) layout.findViewById(R.id.star_flow_urinal_girls);
         starWindowGirls = (RatingBar) layout.findViewById(R.id.star_window_girls);
         starMirrorGirls = (RatingBar) layout.findViewById(R.id.star_mirror_girls);
-        starTapsGirls = (EditText) layout.findViewById(R.id.star_taps_girls);
-        noTumbGirls = (EditText) layout.findViewById(R.id.present_tumbler_girls);
-        noBuckGirls = (EditText) layout.findViewById(R.id.present_bucket_girls);
-        commentsGirls = (EditText) layout.findViewById(R.id.comments_girls);
+        starTapsGirls = (TextView) layout.findViewById(R.id.star_taps_girls);
+        noTumbGirls = (TextView) layout.findViewById(R.id.present_tumbler_girls);
+        noBuckGirls = (TextView) layout.findViewById(R.id.present_bucket_girls);
+        commentsGirls = (TextView) layout.findViewById(R.id.comments_girls);
         tumbBuckSameGirls = (CheckBox) layout.findViewById(R.id.same_buck_tumb_girls);
         doorLatchGirls = (SwitchCompat) layout.findViewById(R.id.latch_doors_girls);
         roofGirls = (SwitchCompat) layout.findViewById(R.id.roof_girls);
         stinkingGirls = (SwitchCompat) layout.findViewById(R.id.stinking_girls);
         drainCloggingGirls = (SwitchCompat) layout.findViewById(R.id.drainage_clogging_girls);
 
+        //boys
         noBasinBoys = (TextView) layout.findViewById(R.id.no_basin_boys);
         noUrinalsBoys = (TextView) layout.findViewById(R.id.no_urinals_boys);
         noTapsBoys = (TextView) layout.findViewById(R.id.no_taps_boys);
         noMirrorBoys = (TextView) layout.findViewById(R.id.no_mirror_boys);
-
         starBasinBoys = (RatingBar) layout.findViewById(R.id.star_basin_boys);
         starUrinalBoys = (RatingBar) layout.findViewById(R.id.star_urinal_boys);
         starWashroomBoys = (RatingBar) layout.findViewById(R.id.star_washroom_boys);
@@ -112,22 +114,23 @@ public class AdminView extends Fragment {
         starFlowUrinalBoys = (RatingBar) layout.findViewById(R.id.star_flow_urinal_boys);
         starWindowBoys = (RatingBar) layout.findViewById(R.id.star_window_boys);
         starMirrorBoys = (RatingBar) layout.findViewById(R.id.star_mirror_boys);
-        starTapsBoys = (EditText) layout.findViewById(R.id.star_taps_boys);
-        noTumbBoys = (EditText) layout.findViewById(R.id.present_tumbler_boys);
-        noBuckBoys = (EditText) layout.findViewById(R.id.present_bucket_boys);
-        commentsBoys = (EditText) layout.findViewById(R.id.comments_boys);
+        starTapsBoys = (TextView) layout.findViewById(R.id.star_taps_boys);
+        noTumbBoys = (TextView) layout.findViewById(R.id.present_tumbler_boys);
+        noBuckBoys = (TextView) layout.findViewById(R.id.present_bucket_boys);
+        commentsBoys = (TextView) layout.findViewById(R.id.comments_boys);
         tumbBuckSameBoys = (CheckBox) layout.findViewById(R.id.same_buck_tumb_boys);
         doorLatchBoys = (SwitchCompat) layout.findViewById(R.id.latch_doors_boys);
         roofBoys = (SwitchCompat) layout.findViewById(R.id.roof_boys);
         stinkingBoys = (SwitchCompat) layout.findViewById(R.id.stinking_boys);
         drainCloggingBoys = (SwitchCompat) layout.findViewById(R.id.drainage_clogging_boys);
         status_boys = (ToggleButton) layout.findViewById(R.id.status_boys);
+
         status_girls = (ToggleButton) layout.findViewById(R.id.status_girls);
         needRepair = (CheckBox) layout.findViewById(R.id.need_repair);
         clean = (CheckBox) layout.findViewById(R.id.clean);
-        noBlackboard = (EditText) layout.findViewById(R.id.no_blackboard);
-        noDustbin = (EditText) layout.findViewById(R.id.no_dustbin);
-        comments = (EditText) layout.findViewById(R.id.comments);
+        noBlackboard = (TextView) layout.findViewById(R.id.no_blackboard);
+        noDustbin = (TextView) layout.findViewById(R.id.no_dustbin);
+        comments = (TextView) layout.findViewById(R.id.comments);
         starBlackboard = (RatingBar) layout.findViewById(R.id.star_blackboard);
         starColor = (RatingBar) layout.findViewById(R.id.star_color);
         statusShade = (ToggleButton) layout.findViewById(R.id.status_shade);
@@ -138,16 +141,16 @@ public class AdminView extends Fragment {
         sportsKits = (SwitchCompat) layout.findViewById(R.id.sports_kits);
         booksStationery = (SwitchCompat) layout.findViewById(R.id.books_stationery);
         amenitiesCultural = (SwitchCompat) layout.findViewById(R.id.amenities_cultural);
-        otherComments = (EditText) layout.findViewById(R.id.other_comments);
-        boys = (EditText) layout.findViewById(R.id.boys);
-        girls = (EditText) layout.findViewById(R.id.girls);
-        corridor = (EditText) layout.findViewById(R.id.corridor);
-        campus = (EditText) layout.findViewById(R.id.campus);
-        water = (EditText) layout.findViewById(R.id.water);
-        dishwash = (EditText) layout.findViewById(R.id.dishwash);
-        classroom = (EditText) layout.findViewById(R.id.classroom);
-        storageroom = (EditText) layout.findViewById(R.id.storageroom);
-        dustbin = (EditText) layout.findViewById(R.id.emptydustbin);
+        otherComments = (TextView) layout.findViewById(R.id.other_comments);
+        boys = (TextView) layout.findViewById(R.id.boys);
+        girls = (TextView) layout.findViewById(R.id.girls);
+        corridor = (TextView) layout.findViewById(R.id.corridor);
+        campus = (TextView) layout.findViewById(R.id.campus);
+        water = (TextView) layout.findViewById(R.id.water);
+        dishwash = (TextView) layout.findViewById(R.id.dishwash);
+        classroom = (TextView) layout.findViewById(R.id.classroom);
+        storageroom = (TextView) layout.findViewById(R.id.storageroom);
+        dustbin = (TextView) layout.findViewById(R.id.emptydustbin);
         regularTankCleanWater = (SwitchCompat) layout.findViewById(R.id.regularity_cleaning_tank);
         purifierProperWater = (SwitchCompat) layout.findViewById(R.id.water_pure_proper);
         regularFlowWaterArea = (SwitchCompat) layout.findViewById(R.id.regular_flow_water);
@@ -162,13 +165,13 @@ public class AdminView extends Fragment {
         cleanAroundDishWashArea = (RatingBar) layout.findViewById(R.id.clean_around_dish_wash_areaa);
         noOfTapsWaterArea = (TextView) layout.findViewById(R.id.no_of_taps);
         noOfTapsDishWashArea = (TextView) layout.findViewById(R.id.no_taps_dish_wash_area);
-        fillingFrequencyWater = (EditText) layout.findViewById(R.id.fill_tank_freq_ans);
-        capacityWater = (EditText) layout.findViewById(R.id.water_tank_capacity_ans);
-        brokenTapsWaterArea = (EditText) layout.findViewById(R.id.broken_taps);
-        noOfDustBinsWaterArea = (EditText) layout.findViewById(R.id.no_of_dustbins);
-        commentsWaterArea = (EditText) layout.findViewById(R.id.water_comments);
-        commentsDishWashArea = (EditText) layout.findViewById(R.id.dish_wash_comments);
-        noOfDustBinsDishWashArea = (EditText) layout.findViewById(R.id.no_of_dustbin);
+        fillingFrequencyWater = (TextView) layout.findViewById(R.id.fill_tank_freq_ans);
+        capacityWater = (TextView) layout.findViewById(R.id.water_tank_capacity_ans);
+        brokenTapsWaterArea = (TextView) layout.findViewById(R.id.broken_taps);
+        noOfDustBinsWaterArea = (TextView) layout.findViewById(R.id.no_of_dustbins);
+        commentsWaterArea = (TextView) layout.findViewById(R.id.water_comments);
+        commentsDishWashArea = (TextView) layout.findViewById(R.id.dish_wash_comments);
+        noOfDustBinsDishWashArea = (TextView) layout.findViewById(R.id.no_of_dustbin);
         statusWtPurifier = (ToggleButton) layout.findViewById(R.id.status_wt_purifier);
         statusDishArea = (ToggleButton) layout.findViewById(R.id.status_dish_area);
         StatusDwArea = (ToggleButton) layout.findViewById(R.id.status_dw_area);
@@ -238,111 +241,111 @@ public class AdminView extends Fragment {
 
 
                     JSONObject json1 = (JSONObject) jsonObj.get(2); //location : 2
-                    values.add(new BasicNameValuePair("lat", json1.getString("lat")));
-                    values.add(new BasicNameValuePair("lon", json1.getString("lon")));
+                    values.put("lat", json1.getString("lat"));
+                    values.put("lon", json1.getString("lon"));
 
 
 
                     JSONObject json2 = (JSONObject) jsonObj.get(4); //boys
-                    values.add(new BasicNameValuePair("basin_boys", json2.getString("basin")));
-                    values.add(new BasicNameValuePair("urinal_boys", json2.getString("urinal")));
-                    values.add(new BasicNameValuePair("washroom_boys", json2.getString("washroom")));
-                    values.add(new BasicNameValuePair("flow_basin_boys", json2.getString("flow_basin")));
-                    values.add(new BasicNameValuePair("flow_urinal_boys", json2.getString("flow_urinal")));
-                    values.add(new BasicNameValuePair("window_boys",json2.getString("window")));
-                    values.add(new BasicNameValuePair("mirror_boys", json2.getString("mirror")));
-                    values.add(new BasicNameValuePair("taps_boys",json2.getString("taps")));
-                    values.add(new BasicNameValuePair("tumb_boys", json2.getString("tumbler")));
-                    values.add(new BasicNameValuePair("buck_boys", json2.getString("bucket")));
-                    values.add(new BasicNameValuePair("latch_boys", json2.getString("door_latch")));
-                    values.add(new BasicNameValuePair("roof_boys", json2.getString("roof")));
-                    values.add(new BasicNameValuePair("stinking_boys", json2.getString("stinking")));
-                    values.add(new BasicNameValuePair("clog_boys", json2.getString("clog")));
-                    values.add(new BasicNameValuePair("comments_boys", json2.getString("comments")));
-                    values.add(new BasicNameValuePair("status_boys",json2.getString("status")));
+                    values.put("basin_boys", json2.getString("basin"));
+                    values.put("urinal_boys", json2.getString("urinal"));
+                    values.put("washroom_boys", json2.getString("washroom"));
+                    values.put("flow_basin_boys", json2.getString("flow_basin"));
+                    values.put("flow_urinal_boys", json2.getString("flow_urinal"));
+                    values.put("window_boys",json2.getString("window"));
+                    values.put("mirror_boys", json2.getString("mirror"));
+                    values.put("taps_boys",json2.getString("taps"));
+                    values.put("tumb_boys", json2.getString("tumbler"));
+                    values.put("buck_boys", json2.getString("bucket"));
+                    values.put("latch_boys", json2.getString("door_latch"));
+                    values.put("roof_boys", json2.getString("roof"));
+                    values.put("stinking_boys", json2.getString("stinking"));
+                    values.put("clog_boys", json2.getString("clog"));
+                    values.put("comments_boys", json2.getString("comments"));
+                    values.put("status_boys",json2.getString("status"));
 
 
                     JSONObject json3 = (JSONObject) jsonObj.get(5); //girls
-                    values.add(new BasicNameValuePair("basin_girls", json3.getString("basin")));
-                    values.add(new BasicNameValuePair("urinal_girls", json3.getString("urinal")));
-                    values.add(new BasicNameValuePair("washroom_girls", json3.getString("washroom")));
-                    values.add(new BasicNameValuePair("flow_basin_girls", json3.getString("flow_basin")));
-                    values.add(new BasicNameValuePair("flow_urinal_girls", json3.getString("flow_urinal")));
-                    values.add(new BasicNameValuePair("window_girls", json3.getString("window")));
-                    values.add(new BasicNameValuePair("mirror_girls", json3.getString("mirror")));
-                    values.add(new BasicNameValuePair("taps_girls", json3.getString("taps")));
-                    values.add(new BasicNameValuePair("tumb_girls", json3.getString("tumbler")));
-                    values.add(new BasicNameValuePair("buck_girls", json3.getString("bucket")));
-                    values.add(new BasicNameValuePair("latch_girls", json3.getString("door_latch")));
-                    values.add(new BasicNameValuePair("roof_girls", json3.getString("roof")));
-                    values.add(new BasicNameValuePair("stinking_girls", json3.getString("stinking")));
-                    values.add(new BasicNameValuePair("clog_girls", json3.getString("clog")));
-                    values.add(new BasicNameValuePair("comments_girls", json3.getString("comments")));
-                    values.add(new BasicNameValuePair("status_girls", json3.getString("status")));
+                    values.put("basin_girls", json3.getString("basin"));
+                    values.put("urinal_girls", json3.getString("urinal"));
+                    values.put("washroom_girls", json3.getString("washroom"));
+                    values.put("flow_basin_girls", json3.getString("flow_basin"));
+                    values.put("flow_urinal_girls", json3.getString("flow_urinal"));
+                    values.put("window_girls", json3.getString("window"));
+                    values.put("mirror_girls", json3.getString("mirror"));
+                    values.put("taps_girls", json3.getString("taps"));
+                    values.put("tumb_girls", json3.getString("tumbler"));
+                    values.put("buck_girls", json3.getString("bucket"));
+                    values.put("latch_girls", json3.getString("door_latch"));
+                    values.put("roof_girls", json3.getString("roof"));
+                    values.put("stinking_girls", json3.getString("stinking"));
+                    values.put("clog_girls", json3.getString("clog"));
+                    values.put("comments_girls", json3.getString("comments"));
+                    values.put("status_girls", json3.getString("status"));
 
 
                     JSONObject json4 = (JSONObject) jsonObj.get(6); //sweeper : 6
-                    values.add(new BasicNameValuePair("staus_water_area", json4.getString("status")));
-                    values.add(new BasicNameValuePair("boys", json4.getString("boys")));
-                    values.add(new BasicNameValuePair("girls", json4.getString("girls")));
-                    values.add(new BasicNameValuePair("corridor", json4.getString("corridor")));
-                    values.add(new BasicNameValuePair("campus", json4.getString("campus")));
-                    values.add(new BasicNameValuePair("water",json4.getString("water")));
-                    values.add(new BasicNameValuePair("class", json4.getString("class")));
-                    values.add(new BasicNameValuePair("storage", json4.getString("storage")));
-                    values.add(new BasicNameValuePair("dustbin", json4.getString("dustbin")));
+                    values.put("staus_water_area", json4.getString("status"));
+                    values.put("boys", json4.getString("boys"));
+                    values.put("girls", json4.getString("girls"));
+                    values.put("corridor", json4.getString("corridor"));
+                    values.put("campus", json4.getString("campus"));
+                    values.put("water",json4.getString("water"));
+                    values.put("class", json4.getString("class"));
+                    values.put("storage", json4.getString("storage"));
+                    values.put("dustbin", json4.getString("dustbin"));
 
                     JSONObject json5 = (JSONObject) jsonObj.get(8); //water tank : 8
-                    values.add(new BasicNameValuePair("reg_clean", json5.getString("rglr_clean")));
-                    values.add(new BasicNameValuePair("purifier_proper", json5.getString("purifier_proper")));
-                    values.add(new BasicNameValuePair("freq_fil", json5.getString("f_filling")));
-                    values.add(new BasicNameValuePair("capacity_tank", json5.getString("capacity")));
-                    values.add(new BasicNameValuePair("f_clean_month", json5.getString("f_clean_month")));
-                    values.add(new BasicNameValuePair("staus_water", json5.getString("status")));
+                    values.put("reg_clean", json5.getString("rglr_clean"));
+                    values.put("purifier_proper", json5.getString("purifier_proper"));
+                    values.put("freq_fil", json5.getString("f_filling"));
+                    values.put("capacity_tank", json5.getString("capacity"));
+                    values.put("f_clean_month", json5.getString("f_clean_month"));
+                    values.put("staus_water", json5.getString("status"));
 
 
                     JSONObject json7 = (JSONObject) jsonObj.get(7); //water area : 7
-                    values.add(new BasicNameValuePair("reg_flow_water",json7.getString("reg_flow")));
-                    values.add(new BasicNameValuePair("tap_leakage_water",json7.getString("tap_leakage")));
-                    values.add(new BasicNameValuePair("drain_clog_water",json7.getString("drain_clog")));
-                    values.add(new BasicNameValuePair("stinking_water_area",json7.getString("stink")));
-                    values.add(new BasicNameValuePair("broken_taps_water",json7.getString("broken_taps")));
-                    values.add(new BasicNameValuePair("dustbins_water",json7.getString("dustbin")));
-                    values.add(new BasicNameValuePair("comments_water",json7.getString("comments")));
-                    values.add(new BasicNameValuePair("clean_water",json7.getString("clean")));
+                    values.put("reg_flow_water",json7.getString("reg_flow"));
+                    values.put("tap_leakage_water",json7.getString("tap_leakage"));
+                    values.put("drain_clog_water",json7.getString("drain_clog"));
+                    values.put("stinking_water_area",json7.getString("stink"));
+                    values.put("broken_taps_water",json7.getString("broken_taps"));
+                    values.put("dustbins_water",json7.getString("dustbin"));
+                    values.put("comments_water",json7.getString("comments"));
+                    values.put("clean_water",json7.getString("clean"));
 
                     JSONObject json8 = (JSONObject) jsonObj.get(1); //dishwash : 1
-                    values.add(new BasicNameValuePair("reg_flow_dish",json8.getString("reg_flow")));
-                    values.add(new BasicNameValuePair("tap_leakage_dish",json8.getString("tap_leakage")));
-                    values.add(new BasicNameValuePair("drain_clog_dish",json8.getString("drain_clog")));
-                    values.add(new BasicNameValuePair("stinking_dish",json8.getString("stink")));
-                    values.add(new BasicNameValuePair("dustbins_dish",json8.getString("dustbin")));
-                    values.add(new BasicNameValuePair("comments_dish",json8.getString("comments")));
-                    values.add(new BasicNameValuePair("clean_dish",json8.getString("clean")));
+                    values.put("reg_flow_dish",json8.getString("reg_flow"));
+                    values.put("tap_leakage_dish",json8.getString("tap_leakage"));
+                    values.put("drain_clog_dish",json8.getString("drain_clog"));
+                    values.put("stinking_dish",json8.getString("stink"));
+                    values.put("dustbins_dish",json8.getString("dustbin"));
+                    values.put("comments_dish",json8.getString("comments"));
+                    values.put("clean_dish",json8.getString("clean"));
 
 
                     JSONObject json9 = (JSONObject) jsonObj.get(4); //others
-                    values.add(new BasicNameValuePair("clean_midday", json9.getString("clean_midday")));
-                    values.add(new BasicNameValuePair("clean_campus", json9.getString("clean_campus")));
-                    values.add(new BasicNameValuePair("sound system", json9.getString("soundsys")));
-                    values.add(new BasicNameValuePair("kitchen midday meals", json9.getString("kitchen")));
-                    values.add(new BasicNameValuePair("sports kits", json9.getString("sports")));
-                    values.add(new BasicNameValuePair("books stationery", json9.getString("stationery")));
-                    values.add(new BasicNameValuePair("amenities cultural", json9.getString("cultural")));
-                    values.add(new BasicNameValuePair("Comments", json9.getString("comments")));
+                    values.put("clean_midday", json9.getString("clean_midday"));
+                    values.put("clean_campus", json9.getString("clean_campus"));
+                    values.put("sound system", json9.getString("soundsys"));
+                    values.put("kitchen midday meals", json9.getString("kitchen"));
+                    values.put("sports kits", json9.getString("sports"));
+                    values.put("books stationery", json9.getString("stationery"));
+                    values.put("amenities cultural", json9.getString("cultural"));
+                    values.put("Comments", json9.getString("comments"));
 
                     JSONObject json0 = (JSONObject) jsonObj.get(0); //campus Renovation and 3 commons
-                    values.add(new BasicNameValuePair("need_repair",json0.getString("need_repair")));
-                    values.add(new BasicNameValuePair("clean", json0.getString("clean")));
-                    values.add(new BasicNameValuePair("board", json0.getString("board")));
-                    values.add(new BasicNameValuePair("dustbin", json0.getString("dustbin")));
-                    values.add(new BasicNameValuePair("cond_board", json0.getString("cond_board")));
-                    values.add(new BasicNameValuePair("color", json0.getString("color")));
-                    values.add(new BasicNameValuePair("renovation_comments", json0.getString("comments")));
-                    values.add(new BasicNameValuePair("status_shade", json0.getString("shade")));
-                    values.add(new BasicNameValuePair("uname", json0.getString("uname")));
-                    values.add(new BasicNameValuePair("date", json0.getString("date")));
-                    values.add(new BasicNameValuePair("scl_id",json0.getString("scl_id")));
+                    values.put("need_repair",json0.getString("need_repair"));
+                    values.put("clean", json0.getString("clean"));
+                    values.put("board", json0.getString("board"));
+                    values.put("dustbin", json0.getString("dustbin"));
+                    values.put("cond_board", json0.getString("cond_board"));
+                    values.put("color", json0.getString("color"));
+                    values.put("renovation_comments", json0.getString("comments"));
+                    values.put("status_shade", json0.getString("shade"));
+                    values.put("uname", json0.getString("uname"));
+                    values.put("date", json0.getString("date"));
+                    values.put("scl_id",json0.getString("scl_id"));
 
                 }
                 Log.d("response",list.toString());
@@ -352,6 +355,58 @@ public class AdminView extends Fragment {
             }
 
             return null;
+        }
+        protected void setText(){
+
+            //boys
+              /*
+            noUrinalsBoys = (TextView) layout.findViewById(R.id.no_urinals_boys);
+            noTapsBoys = (TextView) layout.findViewById(R.id.no_taps_boys);
+            noMirrorBoys = (TextView) layout.findViewById(R.id.no_mirror_boys);
+            noTumbBoys = (TextView) layout.findViewById(R.id.present_tumbler_boys);
+            noBuckBoys = (TextView) layout.findViewById(R.id.present_bucket_boys);
+            */
+            commentsBoys.setText(values.get("comments_boys"));
+            starBasinBoys.setRating(Float.parseFloat(values.get("basin_boys")));
+            starUrinalBoys.setRating(Float.parseFloat(values.get("urinal_boys")));
+            starWashroomBoys.setRating(Float.parseFloat(values.get("washroom_boys")));
+            starFlowBasinBoys.setRating(Float.parseFloat(values.get("flow_basin_boys")));
+            starFlowUrinalBoys.setRating(Float.parseFloat(values.get("flow_urinal_boys")));
+            starWindowBoys.setRating(Float.parseFloat(values.get("window_boys")));
+            starMirrorBoys.setRating(Float.parseFloat(values.get("mirror_boys")));
+            doorLatchBoys.setChecked(values.get("latch_boys").equalsIgnoreCase("yes"));
+            roofBoys.setChecked(values.get("roof_boys").equalsIgnoreCase("yes"));
+            stinkingBoys.setChecked(values.get("stinking_boys").equalsIgnoreCase("yes"));
+            drainCloggingBoys.setChecked(values.get("clog_boys").equalsIgnoreCase("yes"));
+            status_boys.setChecked(values.get(status_boys).equalsIgnoreCase("yes"));
+
+            //girls
+            /*
+            noTumbGirls = (TextView) layout.findViewById(R.id.present_tumbler_girls);
+            noBuckGirls = (TextView) layout.findViewById(R.id.present_bucket_girls);
+            commentsGirls = (TextView) layout.findViewById(R.id.comments_girls);
+            */
+            starTapsGirls.setText(values.get("taps_girls"));
+           /* noBasinGirls = (TextView) layout.findViewById(R.id.no_basin_girls);
+            noUrinalsGirls = (TextView) layout.findViewById(R.id.no_urinals_girls);
+            noTapsGirls = (TextView) layout.findViewById(R.id.no_taps_girls);
+            noMirrorGirls = (TextView) layout.findViewById(R.id.no_mirror_girls);
+            starBasinGirls = (RatingBar) layout.findViewById(R.id.star_basin_girls);
+            starUrinalGirls = (RatingBar) layout.findViewById(R.id.star_urinal_girls);
+            starWashroomGirls = (RatingBar) layout.findViewById(R.id.star_washroom_girls);
+            starFlowBasinGirls = (RatingBar) layout.findViewById(R.id.star_flow_basin_girls);
+            starFlowUrinalGirls = (RatingBar) layout.findViewById(R.id.star_flow_urinal_girls);
+            starWindowGirls = (RatingBar) layout.findViewById(R.id.star_window_girls);
+            starMirrorGirls = (RatingBar) layout.findViewById(R.id.star_mirror_girls);
+            tumbBuckSameGirls = (CheckBox) layout.findViewById(R.id.same_buck_tumb_girls);
+            doorLatchGirls = (SwitchCompat) layout.findViewById(R.id.latch_doors_girls);
+            roofGirls = (SwitchCompat) layout.findViewById(R.id.roof_girls);
+            stinkingGirls = (SwitchCompat) layout.findViewById(R.id.stinking_girls);
+            drainCloggingGirls = (SwitchCompat) layout.findViewById(R.id.drainage_clogging_girls);
+*/
+
+
+
         }
 
         @Override
